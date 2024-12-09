@@ -21,7 +21,8 @@
   text-align: left;
 }
 .pages_navigation_wrapper p span {
-  color: rgb(36, 36, 36);
+  color: rgb(36, 36, 36);opacity: 0.4;
+
 }
 .services_header .book_home_left {
   padding-left: 0;
