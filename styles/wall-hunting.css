@@ -1,0 +1,218 @@
+.services_header .section_title h4 {
+  /* Subtitle/L */
+  color: rgb(53, 53, 53);
+  font-family: Montserrat;
+  font-size: 26px;
+  font-weight: 400;
+  line-height: 140%;
+  letter-spacing: 0%;
+  text-align: left;
+  margin-bottom: 20px;
+}
+
+.about_hunt {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+  margin: 50px auto;
+}
+.about_hunt div {
+  box-sizing: border-box;
+  border: 1px solid rgb(198, 223, 251);
+  border-radius: 5px;
+
+  padding: 30px;
+}
+.about_hunt h3 {
+  /* Subtitle/L */
+  color: rgb(53, 53, 53);
+  font-family: Montserrat;
+  font-size: 26px;
+  font-weight: 400;
+  line-height: 140%;
+  letter-spacing: 0%;
+  text-align: left;
+}
+.about_hunt p {
+  /* Body text/L */
+  color: rgb(53, 53, 53);
+  font-family: Montserrat;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 140%;
+  letter-spacing: 0%;
+  text-align: left;
+}
+
+.exploring {
+  box-sizing: border-box;
+  border: 1px solid rgb(198, 223, 251);
+  border-radius: 5px;
+  padding: 30px;
+  background: rgb(239, 246, 254);
+  margin-bottom: 50px;
+}
+
+.explore_items {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+
+.inc_list_item {
+  border-radius: 5px;
+  padding: 20px;
+  box-shadow: 0px 6px 12px -12px rgba(32, 129, 240, 0.04);
+  background: rgb(255, 255, 255);
+}
+
+.inc_list_item h5 {
+  /* Subtitle/S */
+  color: rgb(53, 53, 53);
+  font-family: Montserrat;
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 140%;
+  letter-spacing: 0%;
+  text-align: left;
+  margin-bottom: 10px;
+}
+
+.comprehensive {
+  box-sizing: border-box;
+  border: 1px solid rgb(198, 223, 251);
+  border-radius: 5px;
+
+  padding: 30px;
+  margin-bottom: 50px;
+}
+ .inc_title h2 {
+  margin-bottom: 20px;
+}
+
+ .inc_title p {
+  /* Body text/L */
+  color: rgb(53, 53, 53);
+  font-family: Montserrat;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 140%;
+  letter-spacing: 0%;
+  text-align: left;
+  margin-bottom: 20px;
+}
+
+.comprehensive_cards {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 20px;
+}
+
+.comprehensive_card {
+  box-sizing: border-box;
+  border: 1px solid rgb(198, 223, 251);
+  border-radius: 5px;
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  background: rgb(239, 246, 254);
+}
+
+.comprehensive_card p {
+  /* Body text/L */
+  color: rgb(53, 53, 53);
+  font-family: Montserrat;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 140%;
+  letter-spacing: 0%;
+  text-align: left;
+}
+.motto_colored {
+  display: flex;
+}
+.motto_colored_wr {
+  margin-bottom: 50px;
+  border-radius: 5px;
+  position: relative;
+  background: rgb(32, 129, 240);
+  padding: 2px 14px;
+  overflow: hidden;
+}
+.motto_colored h3 {
+  /* header/tablet_H2 */
+  color: rgb(255, 255, 255);
+  font-family: Montserrat;
+  font-size: 34px;
+  font-weight: 400;
+  line-height: 41px;
+  letter-spacing: 0%;
+  text-align: left;
+  position: relative;
+}
+
+.motto_colored_bg {
+  height: 50%;
+  bottom: 0;
+  width: 100%;
+  position: absolute;
+  left: 0;
+  background: rgb(32, 200, 79);
+}
+
+.upload_secondary {
+  display: flex;
+  align-items: center;
+  box-sizing: border-box;
+  border: 1px solid rgb(198, 223, 251);
+  border-radius: 5px;
+  padding: 30px 30px 30px 40px;
+  margin-bottom: 20px;
+  gap: 20px;
+}
+.upload_secondary .services_quiz_item_question h4 {
+  margin: 0;
+  max-width: 300px;
+  width: 100%;
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 140%;
+  letter-spacing: 0%;
+}
+.comment_secondary .quiz_comments {
+  width: 100%;
+}
+.comment_secondary .quiz_comments textarea {
+  height: 72px;
+}
+
+.chev_btm_disabled {
+  border-radius: 3px;
+
+  box-shadow: 0px 6px 10px 0px rgba(53, 53, 53, 0.16),
+    0px 2px 0px 0px rgb(3, 3, 3);
+  background: rgb(53, 53, 53);
+  opacity: 0.3;
+}
+
+.summary_item_sec .summary_item_type {
+  width: 60%;
+}
+.summary_item_sec .summary_item_type h4 {
+  /* Body text/S_regular */
+  color: rgb(53, 53, 53);
+  font-family: Montserrat;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 140%;
+  letter-spacing: 0%;
+  text-align: left;
+  max-width: 98px;
+}
+.summary_item_sec .summary_item_type p:last-child {
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 140%;
+  letter-spacing: 0%;
+}

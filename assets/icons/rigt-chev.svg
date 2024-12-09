@@ -1,0 +1,20 @@
+<svg width="8.828369" height="13.656860" viewBox="0 0 8.82837 13.6569" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+	<desc>
+			Created with Pixso.
+	</desc>
+	<defs>
+		<filter id="filter_15_199_dd" x="0.000000" y="0.000000" width="8.828369" height="13.656860" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+			<feFlood flood-opacity="0" result="BackgroundImageFix"/>
+			<feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+			<feOffset dx="1" dy="1"/>
+			<feGaussianBlur stdDeviation="0.333333"/>
+			<feComposite in2="hardAlpha" operator="out" k2="-1" k3="1"/>
+			<feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.14 0"/>
+			<feBlend mode="normal" in2="BackgroundImageFix" result="effect_dropShadow_1"/>
+			<feBlend mode="normal" in="SourceGraphic" in2="effect_dropShadow_1" result="shape"/>
+		</filter>
+	</defs>
+	<g filter="url(#filter_15_199_dd)">
+		<path id="Vector" d="M6.53 0.29C6.92 0.68 6.92 1.31 6.53 1.7L2.41 5.82L6.53 9.94C6.92 10.34 6.92 10.97 6.53 11.36C6.14 11.75 5.51 11.75 5.12 11.36L0.29 6.53C-0.1 6.14 -0.1 5.51 0.29 5.12L5.12 0.29C5.51 -0.1 6.14 -0.1 6.53 0.29Z" fill="#FFFFFF" fill-opacity="1.000000" fill-rule="evenodd"/>
+	</g>
+</svg>

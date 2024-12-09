@@ -1,0 +1,113 @@
+.exploring {
+  margin-top: 50px;
+}
+
+.guarantee {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  box-sizing: border-box;
+  border: 1px solid rgb(198, 223, 251);
+  border-radius: 5px;
+  margin-bottom: 60px;
+  margin-top: 50px;
+  padding: 30px;
+}
+
+.guarantee h4 {
+  color: rgb(53, 53, 53);
+  font-family: Montserrat;
+  font-size: 22px;
+  font-weight: 700;
+  line-height: 150%;
+  letter-spacing: 0%;
+  text-align: left;
+}
+.guarantee p {
+  color: rgb(53, 53, 53);
+  font-family: Montserrat;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 150%;
+  letter-spacing: 0%;
+  text-align: left; /* Dark grey charcoal */
+  opacity: 0.7;
+}
+
+.choice {
+  display: flex;
+  align-items: center;
+  margin-bottom: 60px;
+  gap: 10px;
+}
+.choice p {
+  /* Subtitle/S */
+  color: rgb(53, 53, 53);
+  font-family: Montserrat;
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 140%;
+  letter-spacing: 0%;
+  text-align: left;
+}
+
+.furniture_selects {
+  display: flex;
+  align-items: start;
+  flex-wrap: wrap;
+  gap: 19px;
+}
+.furniture_select_item {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  border-radius: 4px;
+  padding: 12px 14px 12px 14px;
+  box-shadow: 1px 1px 4px 0px rgba(0, 0, 0, 0.08);
+  background: rgb(255, 255, 255);
+}
+.furniture_select_item_check {
+  width: 22px;
+  height: 22px;
+  cursor: pointer;
+}
+.furniture_select_item p {
+  color: rgb(53, 53, 53);
+  font-family: Montserrat;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 17px;
+  letter-spacing: 0%;
+  text-align: left;
+  margin-right: 3px;
+}
+.furniture_select_item .empty_input img {
+  display: none;
+}
+.furniture_select_item .empty_input input {
+  box-sizing: border-box;
+  border-bottom: 1px solid rgb(156, 198, 247);
+  border-radius: 5px;
+
+  box-shadow: inset 2px 2px 6px -2px rgba(0, 0, 0, 0.09);
+  background: rgb(239, 246, 254);
+  /* Body text/M */
+  color: rgb(53, 53, 53);
+  font-family: Montserrat;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 140%;
+  letter-spacing: 0%;
+  text-align: left;
+}
+
+.furniture_select_item .zipcode_form_input input {
+  width: 162px;
+  padding: 0 20px;
+}
+.furniture_select_item .small_input input {
+  width: 83px;
+}
+.furniture_select_item .big_input input {
+  width: 188px;
+}

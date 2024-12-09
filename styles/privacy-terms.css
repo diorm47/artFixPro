@@ -1,0 +1,121 @@
+.privacy_page {
+  padding: 50px 0 100px;
+}
+.pages_title h1 {
+  /* header/desktop_H2 */
+  color: rgb(53, 53, 53);
+  font-family: Montserrat;
+  font-size: 40px;
+  font-weight: 400;
+  line-height: 49px;
+  letter-spacing: 0%;
+  text-align: left;
+  margin-bottom: 10px;
+}
+.privacy_content ul li {
+  color: rgb(32, 200, 79);
+}
+p {
+  color: rgb(53, 53, 53);
+  font-family: Montserrat;
+  font-size: 13px;
+  font-weight: 400;
+  line-height: 150%;
+  letter-spacing: 0%;
+  text-align: left;
+}
+
+.pages_title {
+  margin-bottom: 30px;
+}
+
+.privacy_content div {
+  margin-bottom: 30px;
+}
+.privacy_content p {
+  margin-bottom: 16px;
+}
+.privacy_content h3 {
+  /* Subtitle/L */
+  color: rgb(53, 53, 53);
+  font-family: Montserrat;
+  font-size: 26px;
+  font-weight: 400;
+  line-height: 140%;
+  letter-spacing: 0%;
+  text-align: left;
+  margin-bottom: 10px;
+}
+.privacy_content h4 {
+  /* Subtitle/S */
+  color: rgb(53, 53, 53);
+  font-family: Montserrat;
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 140%;
+  letter-spacing: 0%;
+  text-align: left;
+  margin-bottom: 16px;
+}
+
+.privacy_content ul {
+  padding-left: 20px;
+}
+.content_list {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+
+.colored {
+  box-sizing: border-box;
+  border: 1px solid rgb(198, 223, 251);
+  border-radius: 5px;
+  padding: 20px;
+  background: rgb(239, 246, 254);
+}
+
+.privacy_btm {
+  display: flex;
+  align-items: start;
+  gap: 20px;
+  justify-content: space-between;
+}
+.privacy_btm div:nth-child(1) {
+  width: 50%;
+}
+.privacy_btm div:nth-child(2) {
+  width: 30%;
+}
+.privacy_btm div:nth-child(3) {
+  width: 20%;
+}
+.privacy_content ul li p {
+  margin-bottom: 10px;
+}
+
+.terms_twice {
+  display: flex;
+  align-items: start;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.terms_twice div:first-child {
+  width: 30%;
+}
+
+.terms_twice div:last-child {
+  width: 70%;
+}
+
+.terms_three {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.terms_three div,
+.terms_twice div {
+  margin-bottom: 0;
+}

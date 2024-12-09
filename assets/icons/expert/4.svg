@@ -1,0 +1,18 @@
+<svg width="64.000000" height="64.000000" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+	<desc>
+			Created with Pixso.
+	</desc>
+	<defs>
+		<pattern id="pattern_237_9130" patternContentUnits="objectBoundingBox" width="1.000000" height="1.000000">
+			<use xlink:href="#image237_913_0" transform="matrix(0.015625,0,0,0.015625,0,0)"/>
+		</pattern>
+		<image id="image237_913_0" width="64.000000" height="64.000000" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAABHNCSVQICAgIfAhkiAAAAv5JREFUeJztm8GWmyAUhr/k5NTpZtJNmu6aXd//jWZ2TmeTmU2dLiZd4E0IAQQkWtHvnBwDiuKF+3MFhYV5swJOY1ciga9A0/5vgCr1RJt2+wm89qzUkOiNVgMPCefYAWs5WZ2hUlOjBk7rsWsxNhtL3hQ1IYaVnrAZAKanCSGcfV7HZYBX4MddqzM8NbA3M2evAaUZoEFpmP7zsgE+uAQVNlJE8Q345tl/BLYJ59X54Hb812MCq8+bbCwnsaGL4j4gHcIJ+B14rMl3R/5B+2/1eROXCJrootigWtCXDuGddKE90t1wDaqXeJEecAo5eGIcQg7aAH+AF+477JktJg8vob3FpKK7wSpU0OO9RqgL9OUB+EI/n1+hGkroMt4zSgNWvoOGMgDk8fmY8sEaUCqHkIOGNMCWfj5PW77BH2NEMZQBpAtvuc/4n8xQBhDfPRrpWELG/yhKexaIRiZF9ThAYn9R0KpnWse3L4Q+5aWsDIs1sLe5wJuRNoUrNh26L4Q+5a1lbQbIprBTYNEAbn1+LlSgDHDUMmWcfh+jRgPwiLpnU+fOlL5IUmPMcC0awMxdQESw5Jt2IcYo3u9dLIujYI8Ej5Y8Gw2X54eK6+mq/5mrSNdmgFKF8OzzJqYGlKoJZgywaAB0B0IVShNqR3ryhEyJmVNQXVNSqS8t6egCKzyTtqDqfbzvMoC5AmtbkbVdMGTlxkXluMa2/cXOTHm516Ro1/K4D9/Ep94AdXsNX7pzdThWA4ojRQNMTJ+vuBguBb2b351YDbBh+rxsQ4XQ9N2uN1aykksD+iyvS08ZZTJ29oFQrh6wI10oH9ttjRo9fmWpUSA5DCD+KkNOrID91cpnXfcLIYcBxHf7Ll2njhq9WDTAkZ/i0xXqPaAcWuDav9L2y4uQvjSW9BW21eHBxuCRuAqVbT1gcCEak9lrgLjAFD+Q+MllyH0ivufugPVUP5uDjJ/OuSZBS5kcvVkQ1fNnrwEyCvSJ5aeCeX87uBhgTfiHDlOl9PtbSOIfS/nBbUVYCoAAAAAASUVORK5CYII="/>
+	</defs>
+	<mask id="mask237_913" mask-type="alpha" maskUnits="userSpaceOnUse" x="0.000000" y="0.000000" width="64.000000" height="64.000000">
+		<rect id="004-bookshelf" width="64.000000" height="64.000000" fill="url(#pattern_237_9130)" fill-opacity="1.000000"/>
+	</mask>
+	<g mask="url(#mask237_913)">
+		<path id="002-work-table" d="M0 0L64 0L0 64L0 0Z" fill="#2081F0" fill-opacity="1.000000" fill-rule="nonzero"/>
+		<path id="002-work-table" d="M64 64L0 64L64 0L64 64Z" fill="#1EC94F" fill-opacity="1.000000" fill-rule="nonzero"/>
+	</g>
+</svg>

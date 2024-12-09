@@ -1,0 +1,18 @@
+<svg width="64.000000" height="64.000000" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+	<desc>
+			Created with Pixso.
+	</desc>
+	<defs>
+		<pattern id="pattern_250_10140" patternContentUnits="objectBoundingBox" width="1.000000" height="1.000000">
+			<use xlink:href="#image250_1014_0" transform="matrix(0.015625,0,0,0.015625,0,0)"/>
+		</pattern>
+		<image id="image250_1014_0" width="64.000000" height="64.000000" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAABHNCSVQICAgIfAhkiAAABNJJREFUeJzt22uoVFUUB/CfZT7qqpml2YN7S1OoTFLKzAoJixAEzUL7UIaKQUF9qySTpDdUHxKSiqig+lAURS8fkUFUH0yQSwVFae8ofGTd0nx0+7DO4HicO+8zc29z/3CY2Y+zz1r/2XuttdfZAxvQXeDah2scQgd+76FvX7m6cFWeTgZiFg7ge4fj30ThHPbhB+zQN9GG0ZiOtfkN3djWDIkajOuFrqvyK49qjiy9B/0ENFuAZmNg8nkavmmmIA1AW08NmzTfPTXq2os5hUg4JenwUTEK+yhmCd2eLtTY8jag5QkYmCqfI0Lj/xNOKNaYJmCEWDMtgzQBnVjcDEEyxIV4oqfGNAFd2JypOI3HyGKN/UYwVW7HQ80QJEN0FGtME3Aq7shMlF6INAFf4u5mCJIhJimiU5qAHXglU3Eaj13FGvuNYKo8Ctc2Q5AMMalYY5qAiXg5O1l6H9IE/IQXmiFIhujAglKd+vMBrYr0EmjD1GYIkiHOKtaYJuA8fJqdLL0PhQKh95shSIYYg8tKdeo3gq2KlicgbQMuFtOlZZAmYC9+xhBhF7rwWx2eM0okXH/FX8IwHSciz39EHmIwvhXnEmrBMTgde/ALhmJsqZvSRnB6Un6pRmFyeCwZb15Sfi0pn5+UNyfloinsMjE+GSuX3m8JIzgN61URxGVJwELcmeH4OVwklL9CvOWuCFkRsBQvilTUkIyeQSzVdRiOlXij0gGyIGAxnhQHrxYKw1oLBgkjmkbusFNO+XurGbzeBCwRxuaAOGL3Zo3jDcdGcYjr+Lz6uihPdQRMFO5qVap+CZ5SX+XXitikU7hP6qg8R8YBpTBR/CJjcXRefRbKrxMG7mPMxn49Kz8eD4vd7OCkboY49jM0KS/A5cn3v/E27sk9sJw4YIIIXHI+NTd7luCgCGgKHj9RWRwwCJ8k5Q8xLE+m3Ul9fp7/WGxV3ZGZ1eUSMEFEiN1YgwEVKF8pAWcmY5ajPMxM6tcr3+O0i1mwvdwlcJOY9mtwS/LAek/7HLYKEn4URJRa8zkP0al8j/OdCMs7yiXgQRFarpOt8vkCUmeDVwjleoHtiSCNUD6Heig/A/cpsseo1A32JeWXCY91F7aI/cIRqISARik/1SHlV6hc+cHCeOei0Q1ie/wBbkx3LpeApcL17cdc2SlPTNvh4pe7v4r7L8F1IlibgStxq9D10XTnco3gcvGHiXl4twqhKsHjeEt4g2qwUczQjdiZ1K0WbnVQXr/PsKtcAuYkN2+pUqhKUa3yREbp1QL1adnnUv4M+KIGgXorDvL/yQhVjUo3Q30F00RkuCevrkMs46+S8nKcVIqAs9Xn1NgFZfa7TcToleDcVHmmMICdmI+vcTWeE4SMSfotQ3tPBPyRfE5Ornphd4nnrazDMzbjPZEN3iTSZDeIKDbtVgf0RMDnwpUUSkVVi50iGCmEm3FpleNOEZu1HP4Uvv92PIBFguBFeL2nQRr9cjS9Ha4F85OxHinQNhvPYFyBtm3oTs+AcSKEzBo5xVeIjVYtOKNI2zvJVRJtwvg0+09NtVyFZkAxHDYDuoSxa69wkN6AyUL5cSJTVc7L3ZE4EbsHlOrZBzBM+PaTHXr5Wgqjxax/PkO5GoopwoDvU95y2YVnMeI/usbVHLHpP1MAAAAASUVORK5CYII="/>
+	</defs>
+	<mask id="mask250_1014" mask-type="alpha" maskUnits="userSpaceOnUse" x="0.000000" y="0.000000" width="64.000000" height="64.000000">
+		<rect id="001-window" width="64.000000" height="64.000000" fill="url(#pattern_250_10140)" fill-opacity="1.000000"/>
+	</mask>
+	<g mask="url(#mask250_1014)">
+		<path id="002-work-table" d="M0 0L64 0L0 64L0 0Z" fill="#2081F0" fill-opacity="1.000000" fill-rule="nonzero"/>
+		<path id="002-work-table" d="M64 64L0 64L64 0L64 64Z" fill="#1EC94F" fill-opacity="1.000000" fill-rule="nonzero"/>
+	</g>
+</svg>
