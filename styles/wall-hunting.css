@@ -86,11 +86,11 @@
   padding: 30px;
   margin-bottom: 50px;
 }
- .inc_title h2 {
+.inc_title h2 {
   margin-bottom: 20px;
 }
 
- .inc_title p {
+.inc_title p {
   /* Body text/L */
   color: rgb(53, 53, 53);
   font-family: Montserrat;
@@ -215,4 +215,80 @@
   font-weight: 600;
   line-height: 140%;
   letter-spacing: 0%;
+}
+
+@media only screen and (max-width: 1000px) {
+  .comprehensive_cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+  .motto_colored_wr {
+    display: none;
+  }
+}
+
+@media only screen and (max-width: 500px) {
+  .services_header .section_title h4 {
+    /* Subtitle/S */
+    color: rgb(53, 53, 53);
+    font-family: Montserrat;
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 140%;
+    letter-spacing: 0%;
+    text-align: center;
+  }
+  .about_hunt {
+    grid-template-columns: repeat(1, 1fr);
+  }
+  .about_hunt h3 {
+    font-size: 22px;
+    font-weight: 400;
+    line-height: 140%;
+    letter-spacing: 0%;
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  .about_hunt p {
+    /* Body text/M */
+    color: rgb(53, 53, 53);
+    font-family: Montserrat;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 140%;
+    letter-spacing: 0%;
+    text-align: center;
+  }
+  .explore_items {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    gap: 20px;
+  }
+  .inc_title h2, .inc_title p {
+    text-align: center;
+  }
+  .inc_list_item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  .inc_list_item h5, .inc_list_item p {
+    text-align: center;
+  }
+  .comprehensive_cards {
+    display: flex;
+    flex-direction: column;
+  }
+  .comprehensive_card {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+  }
+  .upload_secondary {
+    flex-direction: column;
+    padding: 30px;
+  }
 }

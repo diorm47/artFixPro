@@ -111,3 +111,102 @@
 .furniture_select_item .big_input input {
   width: 188px;
 }
+
+@media only screen and (max-width: 1000px) {
+  .comprehensive_cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+}
+
+@media only screen and (max-width: 500px) {
+  .explore_items {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    gap: 20px;
+  }
+  .inc_list_item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  .inc_list_item p {
+    text-align: center;
+  }
+  .good_hands .inc_title h2,
+  .good_hands .inc_title p {
+    text-align: center;
+  }
+  .guarantee {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 30px 0 40px;
+  }
+  .guarantee h4 {
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 140%;
+    letter-spacing: 0%;
+    text-align: center;
+  }
+  .guarantee p {
+    /* Body text/M */
+    color: rgb(53, 53, 53);
+    font-family: Montserrat;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 140%;
+    letter-spacing: 0%;
+    text-align: center;
+    margin-top: 5px;
+  }
+  .inc_list_item h5 {
+    text-align: center;
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 140%;
+    letter-spacing: 0%;
+    text-align: center;
+  }
+  .comprehensive_cards {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+  }
+  .comprehensive {
+    margin: 0 auto;
+    margin-bottom: 40px;
+  }
+  .comprehensive .inc_title h2,
+  .comprehensive .inc_title p {
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 140%;
+    letter-spacing: 0%;
+    text-align: center;
+  }
+  .comprehensive .inc_title p {
+    /* Body text/M */
+    color: rgb(53, 53, 53);
+    font-family: Montserrat;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 140%;
+    letter-spacing: 0%;
+    text-align: center;
+  }
+  .comprehensive_card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  .choice {
+    display: none;
+  }
+  .upload_secondary {
+    flex-direction: column;
+  }
+}
