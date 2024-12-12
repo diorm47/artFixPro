@@ -256,3 +256,69 @@
   padding-top: 17px;
   resize: none;
 }
+
+@media only screen and (max-width: 1000px) {
+  .fill_container,
+  .schedule_container {
+    flex-direction: column;
+  }
+  .fill_form,
+  .schedule_left {
+    width: 100%;
+  }
+  .pages_navigation_wrapper {
+    flex-wrap: wrap;
+  }
+}
+
+@media only screen and (max-width: 500px) {
+  .form_three,
+  .form_twice {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 14px;
+    margin-bottom: 30px;
+  }
+  .form_three .form_input,
+  .form_twice .form_input {
+    margin: 0;
+  }
+  .section_title h2 {
+    text-align: center;
+    width: 80%;
+    margin: 0 auto;
+  }
+  .section_title {
+    margin: 40px 0;
+  }
+  .calendar_wrapper {
+    flex-direction: column;
+    gap: 30px;
+  }
+  .calendar_wrapper_left,
+  .calendar_times {
+    width: 100%;
+  }
+  .calendar_total div {
+    width: 40px;
+    height: 40px;
+  }
+  .calendar_total p,
+  .calendar_total h4 {
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 15px;
+    letter-spacing: 0%;
+  }
+  .calendar_totals {
+    gap: 14px;    margin-top: 10px;
+  }
+  .calendar_total {
+    width: 50%;
+
+  }
+
+  .calendar_day, .calendar_dates div {
+    height: 40px;
+  }
+}
