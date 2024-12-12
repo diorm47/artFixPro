@@ -520,7 +520,7 @@ section {
   height: 93px;
   padding-top: 17px;
   resize: none;
-  margin-bottom: 30px;
+
 }
 .contact_form_aff {
   display: flex;
@@ -549,6 +549,7 @@ section {
   align-items: center;
   justify-content: space-between;
   gap: 20px;
+  margin-top: 30px;
 }
 
 .send_btn {
@@ -649,6 +650,17 @@ footer {
   padding-bottom: 50px;
 }
 
+.input_error {
+  margin-top: 6px;
+}
+.input_error span {
+  color: red;
+  font-size: 13px;
+}
+.input_error {
+  visibility: hidden;
+  position: absolute;
+}
 @media only screen and (max-width: 1250px) {
   .container,
   section {

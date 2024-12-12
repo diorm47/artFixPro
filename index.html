@@ -234,39 +234,65 @@
         </div>
         <div class="contact_form_wrapper">
           <div class="contact_form_inputs_list">
-            <input
-              class="contact_form_input"
-              placeholder="First name*"
-              type="text"
-              name=""
-              id=""
-            />
-            <input
-              class="contact_form_input"
-              placeholder="Last name*"
-              type="text"
-              name=""
-              id=""
-            />
-            <input
-              class="contact_form_input"
-              placeholder="Email *"
-              type="text"
-              name=""
-              id=""
-            />
-            <input
-              class="contact_form_input"
-              placeholder="Phone number*"
-              type="text"
-              name=""
-              id=""
-            />
+            <div class="contact_form_item">
+              <input
+                class="contact_form_input"
+                placeholder="First name*"
+                type="text"
+                name=""
+                id=""
+              />
+              <div class="input_error">
+                <span>Fill first name</span>
+              </div>
+            </div>
+            <div class="contact_form_item">
+              <input
+                class="contact_form_input"
+                placeholder="Last name*"
+                type="text"
+                name=""
+                id=""
+              />
+              <div class="input_error">
+                <span>Fill last name</span>
+              </div>
+            </div>
+
+            <div class="contact_form_item">
+              <input
+                class="contact_form_input"
+                placeholder="Email *"
+                type="text"
+                name=""
+                id=""
+              />
+              <div class="input_error">
+                <span>Fill email</span>
+              </div>
+            </div>
+            <div class="contact_form_item">
+              <input
+                class="contact_form_input"
+                placeholder="Phone number*"
+                type="text"
+                name=""
+                id=""
+              />
+              <div class="input_error">
+                <span>Fill phone number</span>
+              </div>
+            </div>
           </div>
-          <textarea
-            class="contact_form_textarea"
-            placeholder="Questions or Comments *"
-          ></textarea>
+          <div class="contact_form_item">
+            <textarea
+              class="contact_form_textarea"
+              placeholder="Questions or Comments *"
+            ></textarea>
+            <div class="input_error">
+              <span>Fill Questions or Comments</span>
+            </div>
+          </div>
 
           <div class="contact_form_actions">
             <div class="contact_form_aff">
@@ -303,5 +329,6 @@
         </div>
       </div>
     </footer>
+    <script src="./scripts/form.js"></script>
   </body>
 </html>
