@@ -121,6 +121,17 @@
 }
 
 @media only screen and (max-width: 500px) {
+  .furniture_select_item {
+    width: 100%;
+    flex-wrap: wrap;
+  }
+  .furniture_select_item .zipcode_form_input {
+    width: 100%;
+  }
+  .furniture_select_item .zipcode_form_input input {
+    width: 100%;
+    margin-top: 10px;
+  }
   .explore_items {
     display: grid;
     grid-template-columns: repeat(1, 1fr);

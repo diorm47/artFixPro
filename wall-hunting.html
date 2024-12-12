@@ -203,23 +203,23 @@
           </div>
           <div class="answers_items">
             <div class="answers_item">
-              <input type="radio" name="" id="" />
+              <input type="radio" name="item1" id="" />
               <p>1-5 ($75 per hour)</p>
             </div>
             <div class="answers_item">
-              <input type="radio" name="" id="" />
+              <input type="radio" name="item1" id="" />
               <p>6-10 ($75 per hour)</p>
             </div>
             <div class="answers_item">
-              <input type="radio" name="" id="" />
+              <input type="radio" name="item1" id="" />
               <p>11-15 ($75 per hour)</p>
             </div>
             <div class="answers_item">
-              <input type="radio" name="" id="" />
+              <input type="radio" name="item1" id="" />
               <p>16-20 ($75 per hour)</p>
             </div>
             <div class="answers_item">
-              <input type="radio" name="" id="" />
+              <input type="radio" name="item1" id="" />
               <p>20-100 ($75 per hour)</p>
             </div>
           </div>
@@ -234,26 +234,26 @@
           </div>
           <div class="answers_items">
             <div class="answers_item">
-              <input type="radio" name="" id="" />
+              <input type="radio" name="item2" id="" />
               <p>
                 No, none of my items are more than 6 ft long or weigh more than
                 20 pounds
               </p>
             </div>
             <div class="answers_item">
-              <input type="radio" name="" id="" />
+              <input type="radio" name="item2" id="" />
               <p>Yes, 1-2 items</p>
             </div>
             <div class="answers_item">
-              <input type="radio" name="" id="" />
+              <input type="radio" name="item2" id="" />
               <p>Yes, 3-5 items (+$15)</p>
             </div>
             <div class="answers_item">
-              <input type="radio" name="" id="" />
+              <input type="radio" name="item2" id="" />
               <p>Yes, 6-10 items (+$15)</p>
             </div>
             <div class="answers_item">
-              <input type="radio" name="" id="" />
+              <input type="radio" name="item2" id="" />
               <p>Yes, more than 10 items (+$15)</p>
             </div>
           </div>
@@ -264,11 +264,11 @@
           </div>
           <div class="answers_items">
             <div class="answers_item">
-              <input type="radio" name="" id="" />
+              <input type="radio" name="item3" id="" />
               <p>Ladder required (+$15)</p>
             </div>
             <div class="answers_item">
-              <input type="radio" name="" id="" />
+              <input type="radio" name="item3" id="" />
               <p>Ladder not required</p>
             </div>
           </div>
@@ -279,23 +279,23 @@
           </div>
           <div class="answers_items">
             <div class="answers_item">
-              <input type="radio" name="" id="" />
+              <input type="radio" name="item4" id="" />
               <p>Drywall</p>
             </div>
             <div class="answers_item">
-              <input type="radio" name="" id="" />
+              <input type="radio" name="item4" id="" />
               <p>Brick (+$20)</p>
             </div>
             <div class="answers_item">
-              <input type="radio" name="" id="" />
+              <input type="radio" name="item4" id="" />
               <p>Concrete (+$20)</p>
             </div>
             <div class="answers_item">
-              <input type="radio" name="" id="" />
+              <input type="radio" name="item4" id="" />
               <p>Steel (+$20)</p>
             </div>
             <div class="answers_item">
-              <input type="radio" name="" id="" />
+              <input type="radio" name="item4" id="" />
               <p>I'm not sure</p>
             </div>
           </div>
@@ -372,7 +372,7 @@
         <div class="services_summary_total">
           <div class="services_summary_total__summ">
             <h4>Estimated</h4>
-            <p>$190.00</p>
+            <p class="summ_total">0</p>
           </div>
           <a href="./schedule.html">
             <button class="green_sumbit_btn">
@@ -407,5 +407,89 @@
         </div>
       </div>
     </footer>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const quizContainer = document.querySelector(".services_quiz_left");
+        const summaryContainer = document.querySelector(
+          ".summary_content_items"
+        );
+        const totalElement = document.querySelector(".summ_total");
+
+        // Function to update the summary when an item is activated/deactivated
+        function updateSummary() {
+          // Clear the summary
+          summaryContainer.innerHTML = "";
+
+          let total = 0;
+
+          // Find all active items
+          const activeCards = document.querySelectorAll(
+            ".answers_item.answer_card_active"
+          );
+          activeCards.forEach((card) => {
+            const question = card
+              .closest(".services_quiz_item")
+              .querySelector("h4").innerText;
+            const answer = card.querySelector("p").innerText;
+
+            // Extract price from the answer text
+            const priceMatch = answer.match(/\$(\d+(\.\d{2})?)/);
+            const price = priceMatch ? parseFloat(priceMatch[1]) : 0;
+            total += price;
+
+            // Create a summary item
+            const summaryItem = document.createElement("div");
+            summaryItem.classList.add("summary_item");
+
+            summaryItem.innerHTML = `
+              <div class="summary_item_type">
+                <div class="summary_item_remove">
+                  <img src="./assets/icons/del.svg" alt="Remove" />
+                </div>
+                <h4>${question}</h4>
+              </div>
+              <p>${answer}</p>
+              <p><b>$${price.toFixed(2)}</b></p>
+            `;
+
+            // Add remove functionality
+            summaryItem
+              .querySelector(".summary_item_remove")
+              .addEventListener("click", () => {
+                card.classList.remove("answer_card_active");
+                updateSummary();
+              });
+
+            // Append to summary
+            summaryContainer.appendChild(summaryItem);
+          });
+
+          // Update total price
+          totalElement.innerText = `$${total.toFixed(2)}`;
+        }
+
+        // Add click event listeners to toggle active class and update summary
+        quizContainer.addEventListener("click", (e) => {
+          const card = e.target.closest(".answers_item");
+          if (card) {
+            // Remove active class from siblings
+            const siblings = card.parentNode.querySelectorAll(".answers_item");
+            siblings.forEach((sibling) =>
+              sibling.classList.remove("answer_card_active")
+            );
+
+            // Add active class to the clicked card
+            card.classList.add("answer_card_active");
+
+            // Update summary
+            updateSummary();
+          }
+        });
+
+        // Initial update
+        updateSummary();
+      });
+    </script>
   </body>
 </html>

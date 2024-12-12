@@ -322,3 +322,7 @@
     height: 40px;
   }
 }
+
+.calendar_day_invicible {
+  visibility: hidden;
+}

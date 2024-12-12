@@ -235,8 +235,13 @@
             <div class="furniture_select_item">
               <input type="checkbox" class="furniture_select_item_check" />
               <p>Bed frame $100</p>
-              <div class="zipcode_form_input small_input">
-                <input type="text" name="" id="" value="7" />
+              <div class="zipcode_form_input small_input empty_input">
+                <input
+                  type="text"
+                  name=""
+                  id=""
+                  placeholder="number of items"
+                />
                 <img
                   class="zipcode_form_input_icon"
                   src="./assets/icons/check mark.svg"
@@ -247,8 +252,13 @@
             <div class="furniture_select_item">
               <input type="checkbox" class="furniture_select_item_check" />
               <p>Chair $50</p>
-              <div class="zipcode_form_input small_input">
-                <input type="text" name="" id="" value="12" />
+              <div class="zipcode_form_input small_input empty_input">
+                <input
+                  type="text"
+                  name=""
+                  id=""
+                  placeholder="number of items"
+                />
                 <img
                   class="zipcode_form_input_icon"
                   src="./assets/icons/check mark.svg"
@@ -259,7 +269,7 @@
             <div class="furniture_select_item">
               <input type="checkbox" class="furniture_select_item_check" />
               <p>Entertainment center or TV stand $80</p>
-              <div class="zipcode_form_input big_input">
+              <div class="zipcode_form_input big_input empty_input">
                 <input
                   type="text"
                   name=""
@@ -277,7 +287,12 @@
               <input type="checkbox" class="furniture_select_item_check" />
               <p>Bookcase $80</p>
               <div class="zipcode_form_input empty_input">
-                <input type="text" name="" id="" value="number of items" />
+                <input
+                  type="text"
+                  name=""
+                  id=""
+                  placeholder="number of items"
+                />
                 <img
                   class="zipcode_form_input_icon"
                   src="./assets/icons/check mark.svg"
@@ -289,7 +304,12 @@
               <input type="checkbox" class="furniture_select_item_check" />
               <p>Dresser $100</p>
               <div class="zipcode_form_input empty_input">
-                <input type="text" name="" id="" value="number of items" />
+                <input
+                  type="text"
+                  name=""
+                  id=""
+                  placeholder="number of items"
+                />
                 <img
                   class="zipcode_form_input_icon"
                   src="./assets/icons/check mark.svg"
@@ -300,8 +320,13 @@
             <div class="furniture_select_item">
               <input type="checkbox" class="furniture_select_item_check" />
               <p>Outdoor furniture $80</p>
-              <div class="zipcode_form_input small_input">
-                <input type="text" name="" id="" value="11" />
+              <div class="zipcode_form_input small_input empty_input">
+                <input
+                  type="text"
+                  name=""
+                  id=""
+                  placeholder="number of items"
+                />
                 <img
                   class="zipcode_form_input_icon"
                   src="./assets/icons/check mark.svg"
@@ -403,32 +428,13 @@
           <h2>Booking Summary</h2>
 
           <div class="summary_content_items">
-            <div class="summary_item summary_item_sec">
-              <div class="summary_item_type">
-                <div class="summary_item_remove">
-                  <img src="./assets/icons/del.svg" alt="" />
-                </div>
-                <h4>How many items need assembly?</h4>
-              </div>
-              <p>14</p>
-              <p><b>$0.00</b></p>
-            </div>
-            <div class="summary_item summary_item_sec">
-              <div class="summary_item_type">
-                <div class="summary_item_remove">
-                  <img src="./assets/icons/del.svg" alt="" />
-                </div>
-                <h4>What kind of furniture would you like assembled?</h4>
-              </div>
-              <p>Entertain ment center or TV stand</p>
-              <p><b>$80.00</b></p>
-            </div>
+         
           </div>
         </div>
         <div class="services_summary_total">
           <div class="services_summary_total__summ">
             <h4>Estimated</h4>
-            <p>$190.00</p>
+            <p class="summ_total">0</p>
           </div>
           <a href="./schedule.html">
             <button class="green_sumbit_btn">
@@ -463,5 +469,87 @@
         </div>
       </div>
     </footer>
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const items = document.querySelectorAll(".furniture_select_item");
+        const summaryContainer = document.querySelector(
+          ".summary_content_items"
+        );
+        const totalDisplay = document.querySelector(".summ_total");
+
+        let totalSum = 0;
+
+        const updateTotal = () => {
+          totalDisplay.textContent = `$${totalSum.toFixed(2)}`;
+        };
+
+        items.forEach((item) => {
+          const checkbox = item.querySelector(".furniture_select_item_check");
+          const priceText = item.querySelector("p").textContent;
+          const input = item.querySelector("input[type='text']");
+
+          const price = parseFloat(priceText.match(/\$(\d+)/)[1]);
+
+          checkbox.addEventListener("change", () => {
+            const itemName = priceText.split("$")[0].trim();
+            const quantity = parseInt(input.value) || 1; // Default to 1 if input is empty
+
+            if (checkbox.checked) {
+              const itemCost = price * quantity;
+              totalSum += itemCost;
+
+              const summaryItem = document.createElement("div");
+              summaryItem.classList.add("summary_item");
+              summaryItem.innerHTML = `
+          <div class="summary_item_type">
+            <div class="summary_item_remove">
+              <img src="./assets/icons/del.svg" alt="Remove" />
+            </div>
+            <h4>${itemName}</h4>
+          </div>
+          <p>${quantity} item(s)</p>
+          <p><b>$${itemCost.toFixed(2)}</b></p>
+        `;
+
+              summaryContainer.appendChild(summaryItem);
+
+              // Remove item on clicking the delete button
+              summaryItem
+                .querySelector(".summary_item_remove img")
+                .addEventListener("click", () => {
+                  summaryItem.remove();
+                  totalSum -= itemCost;
+                  checkbox.checked = false;
+                  updateTotal();
+                });
+            } else {
+              // On unchecking, find and remove the item
+              const summaryItem = Array.from(summaryContainer.children).find(
+                (child) =>
+                  child.querySelector("h4").textContent.includes(itemName)
+              );
+              if (summaryItem) {
+                totalSum -= parseFloat(
+                  summaryItem.querySelector("b").textContent.replace("$", "")
+                );
+                summaryItem.remove();
+              }
+            }
+
+            updateTotal();
+          });
+
+          input.addEventListener("input", () => {
+            if (checkbox.checked) {
+              // Update the total sum dynamically if input changes
+              checkbox.checked = false; // Uncheck to force recalculation
+              checkbox.dispatchEvent(new Event("change")); // Trigger the event
+            }
+          });
+        });
+
+        updateTotal(); // Initialize total
+      });
+    </script>
   </body>
 </html>
