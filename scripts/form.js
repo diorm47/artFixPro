@@ -77,7 +77,7 @@ async function sendToTelegram(data) {
       document
         .querySelector(".success_modal")
         .classList.remove("visible_success_modal");
-    }, 3000);
+    }, 2000);
   } catch (error) {
     console.error("Error:", error);
   }

@@ -89,7 +89,7 @@
               <img src="./assets/icons/arrow-right.svg" alt="" />
             </button>
           </div>
-          <div class="google_rev">
+          <div class="google_rev" onclick="toggleRevModal()">
             <img src="./assets/icons/google.svg" alt="" />
             <img src="./assets/icons/stars.svg" alt="" />
             <p>5250 reviews</p>
@@ -416,6 +416,101 @@
         </div>
       </div>
     </footer>
+
+    <div class="overlay"  onclick="toggleRevModal()">
+      <div class="reviews_modal" onclick="event.stopPropagation()">
+        <div class="modal_exit"  onclick="toggleRevModal()">
+          <img src="./assets/icons/exit.svg" alt="" />
+        </div>
+        <div class="review_cards">
+          <div class="review_card">
+            <div class="review_card_author">
+              <div>
+                <p>Patrick Bartee</p>
+                <span>11 November 2024</span>
+              </div>
+              <img src="./assets/icons/google-icon.svg" alt="" />
+            </div>
+            <img src="./assets/icons/stars.svg" alt="" />
+            <div class="review_card_text">
+              <p>
+                Devon was amazing. He took his time and the piece was perfectly
+                assembled.
+              </p>
+            </div>
+          </div>
+          <div class="review_card">
+            <div class="review_card_author">
+              <div>
+                <p>Patrick Bartee</p>
+                <span>11 November 2024</span>
+              </div>
+              <img src="./assets/icons/google-icon.svg" alt="" />
+            </div>
+            <img src="./assets/icons/stars.svg" alt="" />
+            <div class="review_card_text">
+              <p>
+                Devon was amazing. He took his time and the piece was perfectly
+                assembled.
+              </p>
+            </div>
+          </div>
+          <div class="review_card">
+            <div class="review_card_author">
+              <div>
+                <p>Patrick Bartee</p>
+                <span>11 November 2024</span>
+              </div>
+              <img src="./assets/icons/google-icon.svg" alt="" />
+            </div>
+            <img src="./assets/icons/stars.svg" alt="" />
+            <div class="review_card_text">
+              <p>
+                Devon was amazing. He took his time and the piece was perfectly
+                assembled.
+              </p>
+            </div>
+          </div>
+          <div class="review_card">
+            <div class="review_card_author">
+              <div>
+                <p>Patrick Bartee</p>
+                <span>11 November 2024</span>
+              </div>
+              <img src="./assets/icons/google-icon.svg" alt="" />
+            </div>
+            <img src="./assets/icons/stars.svg" alt="" />
+            <div class="review_card_text">
+              <p>
+                Devon was amazing. He took his time and the piece was perfectly
+                assembled.
+              </p>
+            </div>
+          </div>
+          <div class="review_card">
+            <div class="review_card_author">
+              <div>
+                <p>Patrick Bartee</p>
+                <span>11 November 2024</span>
+              </div>
+              <img src="./assets/icons/google-icon.svg" alt="" />
+            </div>
+            <img src="./assets/icons/stars.svg" alt="" />
+            <div class="review_card_text">
+              <p>
+                Devon was amazing. He took his time and the piece was perfectly
+                assembled.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script>
+      function toggleRevModal() {
+        document.querySelector(".overlay").classList.toggle("visible_overlay");
+      }
+    </script>
 
     <script>
       document.addEventListener("DOMContentLoaded", () => {

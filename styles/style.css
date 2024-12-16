@@ -787,6 +787,115 @@ footer {
   letter-spacing: 0%;
   text-align: center;
 }
+.overlay {
+  position: fixed;
+  left: 0;
+  top: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #00000051;
+  width: 100%;
+  z-index: 11;
+  height: 100vh;
+}
+.reviews_modal {
+  box-sizing: border-box;
+  border: 1px solid rgb(198, 223, 251);
+  border-radius: 5px;
+  width: 330px;
+  height: 481px;
+  padding: 0 20px;
+  padding-right: 10px;
+  position: relative;
+  background: rgb(239, 246, 254);
+}
+.review_card {
+  background: rgb(255, 255, 255);
+  padding: 20px;
+}
+.review_card_author p {
+  color: rgb(53, 53, 53);
+  font-family: Montserrat;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 20px;
+  letter-spacing: 2%;
+  text-align: left;
+  margin-bottom: 4px;
+}
+.review_card_author {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+.review_card_author span {
+  color: rgb(133, 133, 133);
+  font-family: Montserrat;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 15px;
+  letter-spacing: 2%;
+  text-align: left;
+}
+.review_card_text p {
+  color: rgb(53, 53, 53);
+  font-family: Montserrat;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 17px;
+  letter-spacing: 2%;
+  text-align: left;
+  margin-top: 10px;
+}
+.review_card {
+  margin-bottom: 16px;
+}
+.review_cards {
+  height: 100%;
+  width: 100%;
+  overflow: auto;
+  padding-right: 16px;
+}
+.review_cards::-webkit-scrollbar {
+  width: 4px; /* Ширина вертикальной полосы прокрутки */
+  height: 10px; /* Высота горизонтальной полосы прокрутки */
+  border-radius: 11px;
+
+  background: rgb(206, 227, 252);
+}
+
+/* Стили для фона полосы прокрутки */
+.review_cards::-webkit-scrollbar-track {
+  border-radius: 11px;
+
+  background: rgb(206, 227, 252);
+}
+
+/* Стили для ползунка (добавляется поверх track) */
+.review_cards::-webkit-scrollbar-thumb {
+  border-radius: 28px;
+
+  background: rgb(32, 129, 240);
+}
+.modal_exit {
+  display: flex;
+  align-items: center;
+  justify-content:center;
+right: 0;
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  background: rgb(239, 246, 254);
+  cursor: pointer;
+}
+.overlay {
+  display: none;
+}
+.visible_overlay {
+  display: flex;
+}
 @media only screen and (max-width: 1250px) {
   .container,
   section {
@@ -998,7 +1107,7 @@ footer {
   .contact_form_inputs_list {
     display: flex;
     flex-direction: column;
-    gap: 14px;
+    gap: 0;
     margin-bottom: 14px;
   }
   .contact_form_actions {
@@ -1050,5 +1159,9 @@ footer {
   }
   nav {
     gap: 25px;
+  }
+  .input_error {
+    position: static;
+    margin-bottom: 6px;
   }
 }
