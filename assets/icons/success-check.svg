@@ -1,0 +1,27 @@
+<svg width="39.000000" height="38.000000" viewBox="0 0 39 38" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+	<desc>
+			Created with Pixso.
+	</desc>
+	<defs>
+		<filter id="filter_260_939_dd" x="13.333984" y="13.500000" width="15.000000" height="12.000000" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+			<feFlood flood-opacity="0" result="BackgroundImageFix"/>
+			<feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+			<feOffset dx="1" dy="1"/>
+			<feGaussianBlur stdDeviation="0.666667"/>
+			<feComposite in2="hardAlpha" operator="out" k2="-1" k3="1"/>
+			<feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.14 0"/>
+			<feBlend mode="normal" in2="BackgroundImageFix" result="effect_dropShadow_1"/>
+			<feBlend mode="normal" in="SourceGraphic" in2="effect_dropShadow_1" result="shape"/>
+		</filter>
+		<clipPath id="clip260_938">
+			<rect id="number" rx="18.500000" width="38.000000" height="37.000000" transform="translate(0.500000 0.500000)" fill="white" fill-opacity="0"/>
+		</clipPath>
+	</defs>
+	<rect id="number" rx="18.500000" width="38.000000" height="37.000000" transform="translate(0.500000 0.500000)" fill="#20C84F" fill-opacity="1.000000"/>
+	<g clip-path="url(#clip260_938)">
+		<g filter="url(#filter_260_939_dd)">
+			<path id="Vector" d="M24.94 14.66L25.15 14.87C25.27 14.98 25.33 15.12 25.33 15.28C25.33 15.43 25.27 15.58 25.15 15.69L18.31 22.33C18.2 22.43 18.05 22.5 17.89 22.5C17.73 22.5 17.58 22.43 17.47 22.33L14.5 19.45C14.39 19.34 14.33 19.19 14.33 19.04C14.33 18.89 14.39 18.74 14.5 18.63L14.71 18.43C14.83 18.32 14.98 18.26 15.14 18.26C15.29 18.26 15.45 18.32 15.56 18.43L17.47 20.28C17.58 20.39 17.73 20.45 17.89 20.45C18.05 20.45 18.2 20.39 18.31 20.28L24.1 14.66C24.21 14.56 24.36 14.5 24.52 14.5C24.68 14.5 24.83 14.56 24.94 14.66Z" fill="#FFFFFF" fill-opacity="1.000000" fill-rule="nonzero"/>
+		</g>
+	</g>
+	<rect id="number" rx="18.500000" width="38.000000" height="37.000000" transform="translate(0.500000 0.500000)" stroke="#C1F0CE" stroke-opacity="1.000000" stroke-width="1.000000"/>
+</svg>

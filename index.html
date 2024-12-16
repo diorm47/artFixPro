@@ -11,16 +11,19 @@
       <div class="container">
         <nav>
           <div class="nav_left">
-            <a href="#">
-              <div class="nav_menu_item">
-                <p>Our Services</p>
+            <div class="nav_menu_item nav_menu_item_drop">
+              <p>Our Services</p>
+              <div class="nav_menu_item_drop_list">
+                <a href="./tv-mounting.html"><p>TV Mounting</p></a>
+                <a href="./furniture.html"><p>Furniture Assembly</p></a>
+                <a href="./wall-hunting.html"><p>Wall hanging</p></a>
+                <a href="#"><p>Handyman</p></a>
               </div>
-            </a>
-            <a href="#">
-              <div class="nav_menu_item">
-                <p>Contact Us</p>
-              </div>
-            </a>
+            </div>
+
+            <div class="nav_menu_item to_contacts">
+              <p>Contact Us</p>
+            </div>
           </div>
           <a href="./index.html" class="nav_logo">
             <img src="./assets/logo.svg" alt="" />
@@ -127,7 +130,7 @@
       </div>
     </section>
 
-    <section class="book_home">
+    <!-- <section class="book_home">
       <div class="book_home_left">
         <div class="section_title left">
           <h2>
@@ -168,7 +171,7 @@
         src="./assets/images/book-home-img.png"
         alt=""
       />
-    </section>
+    </section> -->
 
     <section class="days90">
       <div class="days90_block">
@@ -219,7 +222,7 @@
       </div>
     </div>
 
-    <section>
+    <section id="contacts_block">
       <div class="contact_form">
         <div class="contact_form_title">
           <div>
@@ -263,7 +266,7 @@
               <input
                 class="contact_form_input"
                 placeholder="Email *"
-                type="text"
+                type="email"
                 name=""
                 id=""
               />
@@ -275,7 +278,7 @@
               <input
                 class="contact_form_input"
                 placeholder="Phone number*"
-                type="text"
+                type="number"
                 name=""
                 id=""
               />
@@ -329,6 +332,13 @@
         </div>
       </div>
     </footer>
+
+    <div class="success_modal">
+      <p>Your request has <br> been sent.</p>
+      <img src="./assets/icons/success-check.svg" alt="">
+      <img src="./assets/images/like.png" alt="">
+    </div>
+
     <script src="./scripts/form.js"></script>
   </body>
 </html>

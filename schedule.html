@@ -13,16 +13,19 @@
       <div class="container">
         <nav>
           <div class="nav_left">
-            <a href="#">
-              <div class="nav_menu_item">
-                <p>Our Services</p>
+            <div class="nav_menu_item nav_menu_item_drop">
+              <p>Our Services</p>
+              <div class="nav_menu_item_drop_list">
+                <a href="./tv-mounting.html"><p>TV Mounting</p></a>
+                <a href="./furniture.html"><p>Furniture Assembly</p></a>
+                <a href="./wall-hunting.html"><p>Wall hanging</p></a>
+                <a href="#"><p>Handyman</p></a>
               </div>
-            </a>
-            <a href="#">
-              <div class="nav_menu_item">
-                <p>Contact Us</p>
-              </div>
-            </a>
+            </div>
+
+            <div class="nav_menu_item to_contacts">
+              <p>Contact Us</p>
+            </div>
           </div>
           <a href="./index.html" class="nav_logo">
             <img src="./assets/logo.svg" alt="" />
@@ -284,5 +287,10 @@
       </div>
     </footer>
     <script src="./scripts/calendar.js"></script>
+    <script>
+      document.querySelector(".to_contacts").addEventListener("click", () => {
+        window.location.href = "/index.html#contacts_block";
+      });
+    </script>
   </body>
 </html>

@@ -22,10 +22,17 @@ function hideError(input) {
 
 function validateInputs() {
   let isValid = true;
+  const phoneInput = formWrapper.querySelector(
+    "input[placeholder='Phone number*']"
+  );
+  const phoneRegex = /^\d{10}$/;
 
   inputs.forEach((input) => {
     if (!input.value.trim()) {
       showError(input, `Fill ${input.placeholder}`);
+      isValid = false;
+    } else if (input === phoneInput && !phoneRegex.test(input.value.trim())) {
+      showError(input, "Invalid phone number format. Use (###) ###-####");
       isValid = false;
     } else {
       hideError(input);
@@ -62,11 +69,17 @@ async function sendToTelegram(data) {
     if (!response.ok) {
       throw new Error("Failed to send message");
     }
-
-    alert("Message sent successfully!");
+    
+    document
+      .querySelector(".success_modal")
+      .classList.add("visible_success_modal");
+    setTimeout(() => {
+      document
+        .querySelector(".success_modal")
+        .classList.remove("visible_success_modal");
+    }, 3000);
   } catch (error) {
     console.error("Error:", error);
-    alert("Failed to send message. Please try again later.");
   }
 }
 
@@ -94,5 +107,12 @@ sendButton.addEventListener("click", (event) => {
   if (validateInputs()) {
     const message = formatMessage();
     sendToTelegram(message);
+  }
+});
+
+document.querySelector(".to_contacts").addEventListener("click", () => {
+  const targetBlock = document.querySelector("#contacts_block");
+  if (targetBlock) {
+    targetBlock.scrollIntoView({ behavior: "smooth", block: "start" });
   }
 });

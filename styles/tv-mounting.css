@@ -316,6 +316,7 @@
 
 .services_quiz {
   margin-bottom: 100px;
+  position: relative;
 }
 
 .services_summary {
@@ -326,6 +327,8 @@
 
   box-shadow: 0px 12px 24px -12px rgba(32, 129, 240, 0.2);
   background: rgb(239, 246, 254);
+  position: sticky;
+  top: 30px;
 }
 
 .summary_content {

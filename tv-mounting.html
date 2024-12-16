@@ -12,16 +12,19 @@
       <div class="container">
         <nav>
           <div class="nav_left">
-            <a href="#">
-              <div class="nav_menu_item">
-                <p>Our Services</p>
+            <div class="nav_menu_item nav_menu_item_drop">
+              <p>Our Services</p>
+              <div class="nav_menu_item_drop_list">
+                <a href="./tv-mounting.html"><p>TV Mounting</p></a>
+                <a href="./furniture.html"><p>Furniture Assembly</p></a>
+                <a href="./wall-hunting.html"><p>Wall hanging</p></a>
+                <a href="#"><p>Handyman</p></a>
               </div>
-            </a>
-            <a href="#">
-              <div class="nav_menu_item">
-                <p>Contact Us</p>
-              </div>
-            </a>
+            </div>
+
+            <div class="nav_menu_item to_contacts">
+              <p>Contact Us</p>
+            </div>
           </div>
           <a href="./index.html" class="nav_logo">
             <img src="./assets/logo.svg" alt="" />
@@ -67,11 +70,20 @@
             <div class="zipcode_form_input">
               <input type="text" name="" id="" />
               <img
-                class="zipcode_form_input_icon"
+                class="zipcode_form_input_icon success_icon"
                 src="./assets/icons/check mark.svg"
                 alt=""
               />
+              <img
+                class="zipcode_form_input_icon error_icon"
+                src="./assets/icons/error.svg"
+                alt=""
+              />
             </div>
+            <span class="error_mess"
+              >Unfortunately, we do not currently offer services in this
+              area</span
+            >
             <button class="green_sumbit_btn">
               preliminary assessment
               <img src="./assets/icons/arrow-right.svg" alt="" />
@@ -458,6 +470,27 @@
     </footer>
 
     <script>
+      function saveToSessionStorage() {
+        const summaryItems = [];
+        const activeCards = document.querySelectorAll(".active_answer_card");
+
+        activeCards.forEach((card) => {
+          const title = card
+            .closest(".services_quiz_item")
+            .querySelector("h4").innerText;
+          const description = card.querySelector("span").innerText;
+          const priceText =
+            card.querySelector("p:last-child")?.innerText || "$0.00";
+          summaryItems.push({ title, description, price: priceText });
+        });
+
+        const totalSum = document.querySelector(".summ_total").textContent;
+        sessionStorage.setItem(
+          "summaryData",
+          JSON.stringify({ summaryItems, totalSum })
+        );
+      }
+
       document.addEventListener("DOMContentLoaded", () => {
         const quizContainer = document.querySelector(".services_quiz_left");
         const summaryContainer = document.querySelector(
@@ -518,6 +551,7 @@
 
           // Update total sum in the designated element
           totalSumElement.textContent = `$${totalSum.toFixed(2)}`;
+            saveToSessionStorage();
         }
 
         // Add click event listeners to toggle active class and update summary
@@ -542,5 +576,11 @@
         updateSummary();
       });
     </script>
+    <script>
+      document.querySelector(".to_contacts").addEventListener("click", () => {
+        window.location.href = "/index.html#contacts_block";
+      });
+    </script>
+    <script src="./scripts/zip.js"></script>
   </body>
 </html>
