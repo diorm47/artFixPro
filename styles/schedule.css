@@ -20,6 +20,7 @@
   gap: 20px;
 }
 
+
 .calendar {
   box-sizing: border-box;
   border: 1px solid rgb(198, 223, 251);
@@ -256,6 +257,12 @@
   padding-top: 17px;
   resize: none;
 }
+.selected_calendar_day {
+  background: rgb(32, 200, 79);
+}
+.selected_calendar_day p {
+  color: #fff;
+}
 
 @media only screen and (max-width: 1000px) {
   .fill_container,
@@ -325,4 +332,11 @@
 
 .calendar_day_invicible {
   visibility: hidden;
+}
+
+.input_error {
+  margin-top: -2px !important;
+}
+.input_error span {
+  font-size: 10px;
 }

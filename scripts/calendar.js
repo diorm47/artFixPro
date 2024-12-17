@@ -1,4 +1,3 @@
-// Генерация календаря
 document.addEventListener("DOMContentLoaded", () => {
   const calendar = document.querySelector(".calendar");
   const calendarTop = calendar.querySelector(".calendar_top");
@@ -68,11 +67,41 @@ document.addEventListener("DOMContentLoaded", () => {
 
       day.innerHTML = `<p>${i}</p>`;
       calendarDays.appendChild(day);
+
+      // Проверка на сохраненную дату в sessionStorage
+      const savedDate = sessionStorage.getItem("selectedDate");
+      if (
+        savedDate &&
+        new Date(savedDate).getDate() === i &&
+        new Date(savedDate).getMonth() === month &&
+        new Date(savedDate).getFullYear() === year
+      ) {
+        day.classList.add("selected_calendar_day");
+      }
+
+      // Слушатель на выбор дня
+      day.addEventListener("click", () => {
+        if (!day.classList.contains("calendar_day_disabled")) {
+          // Убираем класс у ранее выбранного дня
+          const prevSelectedDay = calendarDays.querySelector(
+            ".selected_calendar_day"
+          );
+          if (prevSelectedDay) {
+            prevSelectedDay.classList.remove("selected_calendar_day");
+          }
+
+          // Добавляем класс для выбранного дня
+          day.classList.add("selected_calendar_day");
+
+          // Сохраняем выбранную дату в sessionStorage
+          const selectedDate = new Date(year, month, i);
+          sessionStorage.setItem("selectedDate", selectedDate);
+        }
+      });
     }
 
     // Добавляем дни следующего месяца до конца недели
     const nextDays = 7 - ((firstDayIndex + daysInMonth) % 7);
-
     if (nextDays < 7) {
       for (let i = 1; i <= nextDays; i++) {
         const day = document.createElement("div");
@@ -98,3 +127,27 @@ document.addEventListener("DOMContentLoaded", () => {
   // Инициализация календаря
   renderCalendar(currentDate);
 });
+
+// Функция для сохранения выбора в sessionStorage
+document.querySelectorAll('input[name="time"]').forEach((radio) => {
+  radio.addEventListener("change", (event) => {
+    sessionStorage.setItem("selectedTime", event.target.value);
+  });
+});
+
+// Восстановление выбранного времени при загрузке страницы
+window.addEventListener("load", () => {
+  const selectedTime = sessionStorage.getItem("selectedTime");
+  if (selectedTime) {
+    const selectedRadio = document.querySelector(
+      `input[name="time"][value="${selectedTime}"]`
+    );
+    if (selectedRadio) {
+      selectedRadio.checked = true;
+    }
+  }
+});
+
+function goBack() {
+  window.history.back();
+}

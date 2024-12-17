@@ -440,7 +440,7 @@
               Confirm Selections
               <img src="./assets/icons/arrow-right.svg" alt="" /></button
           ></a>
-          <button class="green_sumbit_btn chev_btm">
+          <button class="green_sumbit_btn chev_btm chev_btm_disabled">
             <img src="./assets/icons/rigt-chev.svg" alt="" />
           </button>
         </div>
@@ -459,8 +459,8 @@
           </p>
         </div>
         <div class="footer_center">
-          <a href="#"><p>Our Services</p></a>
-          <a href="#"><p>Contact Us</p></a>
+          <p class="to_services_sec">Our Services</p>
+          <p class="to_contacts_sec">Contact Us</p>
         </div>
         <div class="footer_right">
           <a href="./terms.html"><p>Terms</p></a>
@@ -469,9 +469,9 @@
       </div>
     </footer>
 
-    <div class="overlay"  onclick="toggleRevModal()">
+    <div class="overlay" onclick="toggleRevModal()">
       <div class="reviews_modal" onclick="event.stopPropagation()">
-        <div class="modal_exit"  onclick="toggleRevModal()">
+        <div class="modal_exit" onclick="toggleRevModal()">
           <img src="./assets/icons/exit.svg" alt="" />
         </div>
         <div class="review_cards">
@@ -593,6 +593,62 @@
         );
         const totalSumElement = document.querySelector(".summ_total");
 
+        // Load data from sessionStorage
+        function loadFromSessionStorage() {
+          const storedData = sessionStorage.getItem("summaryData");
+          if (storedData) {
+            const { summaryItems, totalSum } = JSON.parse(storedData);
+
+            // Clear summary items and restore only the selected ones
+            summaryContainer.innerHTML = "";
+            summaryItems.forEach((item) => {
+              const summaryItem = document.createElement("div");
+              summaryItem.classList.add("summary_item");
+
+              summaryItem.innerHTML = `
+            <div class="summary_item_type">
+              <div class="summary_item_remove">
+                <img src="./assets/icons/del.svg" alt="Remove" />
+              </div>
+              <h4>${item.title}</h4>
+            </div>
+            <p>:${item.description}</p>
+            <p>${item.price}</p>
+          `;
+
+              // Append to summary
+              summaryContainer.appendChild(summaryItem);
+            });
+
+            // Restore total sum
+            totalSumElement.textContent = totalSum;
+
+            // Sync UI with active cards
+            syncActiveCards(summaryItems);
+          }
+        }
+
+        // Sync active cards with summary items
+        function syncActiveCards(summaryItems) {
+          const allCards = document.querySelectorAll(".answer_card");
+          allCards.forEach((card) => {
+            const title = card
+              .closest(".services_quiz_item")
+              .querySelector("h4").innerText;
+            const description = card.querySelector("span").innerText;
+
+            const isActive = summaryItems.some(
+              (item) => item.title === title && item.description === description
+            );
+
+            if (isActive) {
+              card.classList.add("active_answer_card");
+            } else {
+              card.classList.remove("active_answer_card");
+            }
+          });
+        }
+
         // Function to update the summary when an item is activated/deactivated
         function updateSummary() {
           // Clear the summary
@@ -622,15 +678,15 @@
             summaryItem.classList.add("summary_item");
 
             summaryItem.innerHTML = `
-        <div class="summary_item_type">
-          <div class="summary_item_remove">
-            <img src="./assets/icons/del.svg" alt="Remove" />
+          <div class="summary_item_type">
+            <div class="summary_item_remove">
+              <img src="./assets/icons/del.svg" alt="Remove" />
+            </div>
+            <h4>${title}</h4>
           </div>
-          <h4>${title}</h4>
-        </div>
-        <p>:${description}</p>
-        <p>${priceText}</p>
-      `;
+          <p>:${description}</p>
+          <p>${priceText}</p>
+        `;
 
             // Add remove functionality
             summaryItem
@@ -667,15 +723,41 @@
           }
         });
 
-        // Initial update
-        updateSummary();
+        // Load data on page load
+        loadFromSessionStorage();
       });
     </script>
+
     <script>
       document.querySelector(".to_contacts").addEventListener("click", () => {
         window.location.href = "/index.html#contacts_block";
       });
+      document
+        .querySelector(".to_contacts_sec")
+        .addEventListener("click", () => {
+          window.location.href = "/index.html#contacts_block";
+        });
+      document
+        .querySelector(".to_services_sec")
+        .addEventListener("click", () => {
+          window.location.href = "/index.html#services_block";
+        });
     </script>
     <script src="./scripts/zip.js"></script>
+    <script>
+      window.onload = function () {
+        const summaryData = sessionStorage.getItem("summaryData");
+        if (summaryData) {
+          const parsedData = JSON.parse(summaryData);
+          if (
+            parsedData.summaryItems[0].question ||
+            parsedData.summaryItems[0].quantity
+          ) {
+            sessionStorage.clear();
+            window.location.reload();
+          }
+        }
+      };
+    </script>
   </body>
 </html>

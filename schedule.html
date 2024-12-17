@@ -132,47 +132,47 @@
           <div class="calendar_times">
             <div class="calendar_time">
               <p>08:00AM - 10:00AM</p>
-              <input type="radio" name="time" />
+              <input type="radio" name="time" value="08:00AM - 10:00AM" />
             </div>
             <div class="calendar_time">
               <p>09:00AM - 11:00AM</p>
-              <input type="radio" name="time" />
+              <input type="radio" name="time" value="09:00AM - 11:00AM" />
             </div>
             <div class="calendar_time">
               <p>10:00AM - 12:00PM</p>
-              <input type="radio" name="time" />
+              <input type="radio" name="time" value="10:00AM - 12:00PM" />
             </div>
             <div class="calendar_time">
               <p>11:00AM - 01:00PM</p>
-              <input type="radio" name="time" />
+              <input type="radio" name="time" value="11:00AM - 01:00PM" />
             </div>
             <div class="calendar_time">
               <p>12:00PM - 02:00PM</p>
-              <input type="radio" name="time" />
+              <input type="radio" name="time" value="12:00PM - 02:00PM" />
             </div>
             <div class="calendar_time">
               <p>01:00PM - 03:00PM</p>
-              <input type="radio" name="time" />
+              <input type="radio" name="time" value="01:00PM - 03:00PM" />
             </div>
             <div class="calendar_time">
               <p>02:00PM - 04:00PM</p>
-              <input type="radio" name="time" />
+              <input type="radio" name="time" value="02:00PM - 04:00PM" />
             </div>
             <div class="calendar_time">
               <p>03:00PM - 05:00PM</p>
-              <input type="radio" name="time" />
+              <input type="radio" name="time" value="03:00PM - 05:00PM" />
             </div>
             <div class="calendar_time">
               <p>04:00PM - 06:00PM</p>
-              <input type="radio" name="time" />
+              <input type="radio" name="time" value="04:00PM - 06:00PM" />
             </div>
             <div class="calendar_time">
               <p>05:00PM - 07:00PM</p>
-              <input type="radio" name="time" />
+              <input type="radio" name="time" value="05:00PM - 07:00PM" />
             </div>
             <div class="calendar_time">
               <p>06:00PM - 08:00PM</p>
-              <input type="radio" name="time" />
+              <input type="radio" name="time" value="06:00PM - 08:00PM" />
             </div>
           </div>
         </div>
@@ -181,84 +181,19 @@
         <div class="summary_content">
           <h2>Booking Summary</h2>
 
-          <div class="summary_content_items">
-            <div class="summary_item">
-              <div class="summary_item_type">
-                <div class="summary_item_remove">
-                  <img src="./assets/icons/del.svg" alt="" />
-                </div>
-                <h4>TV Size</h4>
-              </div>
-              <p>:50+65 “</p>
-              <p>$129.00</p>
-            </div>
-            <div class="summary_item">
-              <div class="summary_item_type">
-                <div class="summary_item_remove">
-                  <img src="./assets/icons/del.svg" alt="" />
-                </div>
-                <h4>Bracket</h4>
-              </div>
-              <p>:Tilt</p>
-              <p>$90.00</p>
-            </div>
-            <div class="note_block note_block_sec">
-              <img src="./assets/icons/note-icon.svg" alt="" />
-              <p>We will send an assistant to help technician lift the tv.</p>
-            </div>
-            <div class="summary_item">
-              <div class="summary_item_type">
-                <div class="summary_item_remove">
-                  <img src="./assets/icons/del.svg" alt="" />
-                </div>
-                <h4>Wall Type</h4>
-              </div>
-              <p>:Brick</p>
-              <p>$70.00</p>
-            </div>
-            <div class="summary_item">
-              <div class="summary_item_type">
-                <div class="summary_item_remove">
-                  <img src="./assets/icons/del.svg" alt="" />
-                </div>
-                <h4>Concealment</h4>
-              </div>
-              <p>:Yes</p>
-              <p class="hidden">$129.00</p>
-            </div>
-            <div class="summary_item">
-              <div class="summary_item_type">
-                <div class="summary_item_remove">
-                  <img src="./assets/icons/del.svg" alt="" />
-                </div>
-                <h4>Wire concealment type</h4>
-              </div>
-              <p>:On wall</p>
-              <p>$50.00</p>
-            </div>
-            <div class="summary_item">
-              <div class="summary_item_type">
-                <div class="summary_item_remove">
-                  <img src="./assets/icons/del.svg" alt="" />
-                </div>
-                <h4>Kit</h4>
-              </div>
-              <p>:Yes</p>
-              <p>$150.00</p>
-            </div>
-          </div>
+          <div class="summary_content_items"></div>
         </div>
         <div class="services_summary_total">
           <div class="services_summary_total__summ">
             <h4>Estimated</h4>
-            <p>$489.00</p>
+            <p>$0</p>
           </div>
           <a href="./fill-up.html">
             <button class="green_sumbit_btn">
               Confirm Selections
               <img src="./assets/icons/arrow-right.svg" alt="" /></button
           ></a>
-          <button class="green_sumbit_btn chev_btm">
+          <button class="green_sumbit_btn chev_btm" onclick="goBack()">
             <img src="./assets/icons/rigt-chev.svg" alt="" />
           </button>
         </div>
@@ -277,8 +212,8 @@
           </p>
         </div>
         <div class="footer_center">
-          <a href="#"><p>Our Services</p></a>
-          <a href="#"><p>Contact Us</p></a>
+          <p class="to_services_sec">Our Services</p>
+          <p class="to_contacts_sec">Contact Us</p>
         </div>
         <div class="footer_right">
           <a href="./terms.html"><p>Terms</p></a>
@@ -290,6 +225,120 @@
     <script>
       document.querySelector(".to_contacts").addEventListener("click", () => {
         window.location.href = "/index.html#contacts_block";
+      });
+      document
+        .querySelector(".to_contacts_sec")
+        .addEventListener("click", () => {
+          window.location.href = "/index.html#contacts_block";
+        });
+      document
+        .querySelector(".to_services_sec")
+        .addEventListener("click", () => {
+          window.location.href = "/index.html#services_block";
+        });
+    </script>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const summaryContainer = document.querySelector(
+          ".summary_content_items"
+        );
+        const totalSumElement = document.querySelector(
+          ".services_summary_total__summ p"
+        );
+
+        // Function to populate summary from sessionStorage
+        function populateSummary() {
+          // Get data from sessionStorage
+          const savedData = JSON.parse(sessionStorage.getItem("summaryData"));
+          if (!savedData) return; // Exit if there's no data
+
+          const { summaryItems, totalSum } = savedData;
+
+          // Clear the current summary items
+          summaryContainer.innerHTML = "";
+
+          // Populate summary items
+          summaryItems.forEach((item) => {
+            const {
+              title,
+              description,
+              price,
+              question,
+              answer,
+              itemName,
+              quantity,
+            } = item;
+
+            // Create a summary item element
+            const summaryItem = document.createElement("div");
+            summaryItem.classList.add("summary_item");
+
+            summaryItem.innerHTML = `
+          <div class="summary_item_type">
+            <div class="summary_item_remove">
+              <img src="./assets/icons/del.svg" alt="Remove" />
+            </div>
+            <h4>${title || question || itemName}</h4>
+          </div>
+          <p>:${description || answer || `${quantity} item(s)`}</p>
+          <p>${price}</p>
+        `;
+
+            // Add remove functionality
+            summaryItem
+              .querySelector(".summary_item_remove")
+              .addEventListener("click", () => {
+                if (title) {
+                  removeSummaryItem(title);
+                  console.log(title);
+                } else {
+                  removeSummaryItem(question);
+                }
+              });
+
+            summaryContainer.appendChild(summaryItem);
+          });
+
+          // Update total sum
+          totalSumElement.textContent = totalSum;
+        }
+
+        // Function to remove an item from the summary and sessionStorage
+        function removeSummaryItem(titleToRemove) {
+          const savedData = JSON.parse(sessionStorage.getItem("summaryData"));
+          if (!savedData) return;
+
+          const { summaryItems, totalSum } = savedData;
+
+          // Filter out the item to remove
+          const updatedItems = summaryItems.filter(
+            (item) =>
+              item.title !== titleToRemove && item.question !== titleToRemove
+          );
+
+          // Update total sum
+          const updatedTotalSum = updatedItems.reduce(
+            (sum, item) =>
+              sum + parseFloat(item.price.replace(/[^\d.]/g, "")) || 0,
+            0
+          );
+
+          // Save the updated data to sessionStorage
+          sessionStorage.setItem(
+            "summaryData",
+            JSON.stringify({
+              summaryItems: updatedItems,
+              totalSum: `$${updatedTotalSum.toFixed(2)}`,
+            })
+          );
+
+          // Repopulate the summary
+          populateSummary();
+        }
+
+        // Populate summary on page load
+        populateSummary();
       });
     </script>
   </body>

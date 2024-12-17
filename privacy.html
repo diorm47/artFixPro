@@ -258,8 +258,8 @@
           </p>
         </div>
         <div class="footer_center">
-          <a href="#"><p>Our Services</p></a>
-          <a href="#"><p>Contact Us</p></a>
+          <p class="to_services_sec">Our Services</p>
+          <p class="to_contacts_sec">Contact Us</p>
         </div>
         <div class="footer_right">
           <a href="./terms.html"><p>Terms</p></a>
@@ -271,6 +271,16 @@
       document.querySelector(".to_contacts").addEventListener("click", () => {
         window.location.href = "/index.html#contacts_block";
       });
+      document
+        .querySelector(".to_contacts_sec")
+        .addEventListener("click", () => {
+          window.location.href = "/index.html#contacts_block";
+        });
+      document
+        .querySelector(".to_services_sec")
+        .addEventListener("click", () => {
+          window.location.href = "/index.html#services_block";
+        });
     </script>
   </body>
 </html>

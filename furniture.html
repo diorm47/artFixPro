@@ -470,8 +470,8 @@
           </p>
         </div>
         <div class="footer_center">
-          <a href="#"><p>Our Services</p></a>
-          <a href="#"><p>Contact Us</p></a>
+          <p class="to_services_sec">Our Services</p>
+          <p class="to_contacts_sec">Contact Us</p>
         </div>
         <div class="footer_right">
           <a href="./terms.html"><p>Terms</p></a>
@@ -569,6 +569,7 @@
         </div>
       </div>
     </div>
+
     <script>
       function toggleRevModal() {
         document.querySelector(".overlay").classList.toggle("visible_overlay");
@@ -585,20 +586,106 @@
 
         let totalSum = 0;
 
+        // Функция для обновления общей суммы
         const updateTotal = () => {
           totalDisplay.textContent = `$${totalSum.toFixed(2)}`;
         };
 
+        // Функция для сохранения состояния в sessionStorage
+        const saveState = () => {
+          const summaryItems = [];
+          items.forEach((item, index) => {
+            const checkbox = item.querySelector(".furniture_select_item_check");
+            const input = item.querySelector("input[type='text']");
+            const priceText = item.querySelector("p").textContent;
+            const price = parseFloat(priceText.match(/\$(\d+)/)[1]);
+            const quantity = parseInt(input.value) || 1;
+
+            // Сохраняем только выбранные элементы
+            if (checkbox.checked) {
+              summaryItems.push({
+                checked: checkbox.checked,
+                quantity: quantity,
+                price: price,
+                itemName: priceText.split("$")[0].trim(),
+              });
+            }
+          });
+
+          // Добавляем totalSum в состояние
+          sessionStorage.setItem(
+            "summaryData",
+            JSON.stringify({ summaryItems, totalSum })
+          );
+        };
+
+        // Функция для загрузки состояния из sessionStorage
+        const loadState = () => {
+          const savedState = JSON.parse(sessionStorage.getItem("summaryData"));
+          if (savedState && savedState.summaryItems) {
+            savedState.summaryItems.forEach((itemState) => {
+              const item = Array.from(items).find((i) =>
+                i.querySelector("p").textContent.includes(itemState.itemName)
+              );
+              if (item) {
+                const checkbox = item.querySelector(
+                  ".furniture_select_item_check"
+                );
+                const input = item.querySelector("input[type='text']");
+                const priceText = item.querySelector("p").textContent;
+                const price = itemState.price;
+
+                // Восстанавливаем состояние элемента
+                checkbox.checked = itemState.checked;
+                input.value = itemState.quantity;
+
+                if (checkbox.checked) {
+                  const itemCost = price * itemState.quantity;
+                  totalSum += itemCost;
+
+                  const summaryItem = document.createElement("div");
+                  summaryItem.classList.add("summary_item");
+                  summaryItem.innerHTML = `
+                <div class="summary_item_type">
+                  <div class="summary_item_remove">
+                    <img src="./assets/icons/del.svg" alt="Remove" />
+                  </div>
+                  <h4>${itemState.itemName}</h4>
+                </div>
+                <p>${itemState.quantity} item(s)</p>
+                <p><b>$${itemCost.toFixed(2)}</b></p>
+              `;
+                  summaryContainer.appendChild(summaryItem);
+
+                  // Удаление элемента из сводки
+                  summaryItem
+                    .querySelector(".summary_item_remove img")
+                    .addEventListener("click", () => {
+                      summaryItem.remove();
+                      totalSum -= itemCost;
+                      checkbox.checked = false;
+                      updateTotal();
+                    });
+                }
+              }
+            });
+
+            // Восстанавливаем totalSum из сохраненного состояния
+            totalSum = savedState.totalSum;
+            updateTotal();
+          }
+        };
+
+        // Слушатели событий для флажков и полей ввода
         items.forEach((item) => {
           const checkbox = item.querySelector(".furniture_select_item_check");
           const priceText = item.querySelector("p").textContent;
           const input = item.querySelector("input[type='text']");
-
           const price = parseFloat(priceText.match(/\$(\d+)/)[1]);
 
           checkbox.addEventListener("change", () => {
             const itemName = priceText.split("$")[0].trim();
-            const quantity = parseInt(input.value) || 1; // Default to 1 if input is empty
+            const quantity = parseInt(input.value) || 1; // Если поле пустое, по умолчанию 1
 
             if (checkbox.checked) {
               const itemCost = price * quantity;
@@ -607,19 +694,18 @@
               const summaryItem = document.createElement("div");
               summaryItem.classList.add("summary_item");
               summaryItem.innerHTML = `
-          <div class="summary_item_type">
-            <div class="summary_item_remove">
-              <img src="./assets/icons/del.svg" alt="Remove" />
+            <div class="summary_item_type">
+              <div class="summary_item_remove">
+                <img src="./assets/icons/del.svg" alt="Remove" />
+              </div>
+              <h4>${itemName}</h4>
             </div>
-            <h4>${itemName}</h4>
-          </div>
-          <p>${quantity} item(s)</p>
-          <p><b>$${itemCost.toFixed(2)}</b></p>
-        `;
-
+            <p>${quantity} item(s)</p>
+            <p><b>$${itemCost.toFixed(2)}</b></p>
+          `;
               summaryContainer.appendChild(summaryItem);
 
-              // Remove item on clicking the delete button
+              // Удаление элемента из сводки
               summaryItem
                 .querySelector(".summary_item_remove img")
                 .addEventListener("click", () => {
@@ -629,7 +715,7 @@
                   updateTotal();
                 });
             } else {
-              // On unchecking, find and remove the item
+              // Если флажок снят, удаляем элемент из сводки
               const summaryItem = Array.from(summaryContainer.children).find(
                 (child) =>
                   child.querySelector("h4").textContent.includes(itemName)
@@ -643,25 +729,79 @@
             }
 
             updateTotal();
+            saveState(); // Сохраняем состояние после изменения
           });
 
           input.addEventListener("input", () => {
             if (checkbox.checked) {
-              // Update the total sum dynamically if input changes
-              checkbox.checked = false; // Uncheck to force recalculation
-              checkbox.dispatchEvent(new Event("change")); // Trigger the event
+              const quantity = parseInt(input.value) || 1;
+              // Обновляем общую сумму при изменении количества
+              const itemCost = price * quantity;
+
+              // Находим и обновляем элемент в сводке
+              const summaryItem = Array.from(summaryContainer.children).find(
+                (child) =>
+                  child
+                    .querySelector("h4")
+                    .textContent.includes(priceText.split("$")[0].trim())
+              );
+
+              if (summaryItem) {
+                summaryItem.querySelector(
+                  "p"
+                ).textContent = `${quantity} item(s)`;
+                summaryItem.querySelector(
+                  "b"
+                ).textContent = `$${itemCost.toFixed(2)}`;
+                totalSum = 0;
+                Array.from(summaryContainer.children).forEach((item) => {
+                  totalSum += parseFloat(
+                    item.querySelector("b").textContent.replace("$", "")
+                  );
+                });
+              }
+
+              updateTotal();
+              saveState(); // Сохраняем состояние после изменения
             }
           });
         });
 
-        updateTotal(); // Initialize total
+        loadState(); // Загружаем состояние при загрузке страницы
+        updateTotal(); // Инициализация общей суммы
       });
     </script>
+
     <script>
       document.querySelector(".to_contacts").addEventListener("click", () => {
         window.location.href = "/index.html#contacts_block";
       });
+      document
+        .querySelector(".to_contacts_sec")
+        .addEventListener("click", () => {
+          window.location.href = "/index.html#contacts_block";
+        });
+      document
+        .querySelector(".to_services_sec")
+        .addEventListener("click", () => {
+          window.location.href = "/index.html#services_block";
+        });
     </script>
     <script src="./scripts/zip.js"></script>
+    <script>
+      window.onload = function () {
+        const summaryData = sessionStorage.getItem("summaryData");
+        if (summaryData) {
+          const parsedData = JSON.parse(summaryData);
+          if (
+            parsedData.summaryItems[0].title ||
+            parsedData.summaryItems[0].question
+          ) {
+            sessionStorage.clear();
+            window.location.reload();
+          }
+        }
+      };
+    </script>
   </body>
 </html>
