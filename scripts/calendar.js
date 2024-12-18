@@ -132,12 +132,12 @@ document.addEventListener("DOMContentLoaded", () => {
 document.querySelectorAll('input[name="time"]').forEach((radio) => {
   radio.addEventListener("change", (event) => {
     // Убираем активный класс у всех элементов
-    document.querySelectorAll('.calendar_time').forEach(label => {
-      label.classList.remove('active_calendar_time');
+    document.querySelectorAll(".calendar_time").forEach((label) => {
+      label.classList.remove("active_calendar_time");
     });
     // Добавляем активный класс выбранному элементу
-    event.target.closest('label').classList.add('active_calendar_time');
-    
+    event.target.closest("label").classList.add("active_calendar_time");
+
     // Сохраняем выбранное время в sessionStorage
     sessionStorage.setItem("selectedTime", event.target.value);
   });
@@ -152,16 +152,14 @@ window.addEventListener("load", () => {
     );
     if (selectedRadio) {
       selectedRadio.checked = true;
-      selectedRadio.closest('label').classList.add('active_calendar_time');  // Добавляем активный класс
+      selectedRadio.closest("label").classList.add("active_calendar_time"); // Добавляем активный класс
     }
   }
 });
 
-
 function goBack() {
-  window.history.back();
+  window.location.href = sessionStorage.getItem("service");
 }
-
 
 const confirmButton = document.querySelector(".to_fill_up");
 

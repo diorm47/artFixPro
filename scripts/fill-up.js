@@ -19,7 +19,7 @@ window.addEventListener("load", () => {
   const zipCodeInput = document.querySelector(".zip_code_fill_up");
 
   if (savedZipCode && zipCodeInput) {
-    zipCodeInput.value = savedZipCode; // Устанавливаем значение из sessionStorage
+    zipCodeInput.value = savedZipCode;
   }
 });
 
@@ -113,9 +113,20 @@ document.getElementById("finalConfirmBtn").addEventListener("click", () => {
     .classList.remove("visible_overlay"); // Закрытие модалки после отправки
 });
 
+function base64ToBlob(base64, mime) {
+  const byteCharacters = atob(base64.split(",")[1]); // Отделяем Base64 часть
+  const byteNumbers = new Array(byteCharacters.length);
+  for (let i = 0; i < byteCharacters.length; i++) {
+    byteNumbers[i] = byteCharacters.charCodeAt(i);
+  }
+  const byteArray = new Uint8Array(byteNumbers);
+  return new Blob([byteArray], { type: mime });
+}
+
 async function sendToTelegram(data) {
   try {
-    const response = await fetch(TELEGRAM_API_URL, {
+    // Отправляем текстовое сообщение
+    const textResponse = await fetch(TELEGRAM_API_URL, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
@@ -125,8 +136,29 @@ async function sendToTelegram(data) {
       }),
     });
 
-    if (!response.ok) {
-      throw new Error("Failed to send message");
+    if (!textResponse.ok) {
+      throw new Error("Failed to send text message");
+    }
+
+    const base64Image = sessionStorage.getItem("uploadedImage");
+    // Если есть изображение, отправляем его
+    if (base64Image) {
+      const blob = base64ToBlob(base64Image, "image/png");
+      const formData = new FormData();
+      formData.append("chat_id", CHAT_ID);
+      formData.append("photo", blob, "photo.png");
+
+      const photoResponse = await fetch(
+        `https://api.telegram.org/bot${BOT_TOKEN}/sendPhoto`,
+        {
+          method: "POST",
+          body: formData,
+        }
+      );
+
+      if (!photoResponse.ok) {
+        throw new Error("Failed to send photo");
+      }
     }
 
     document.querySelector(".overlay").classList.add("visible_overlay");
@@ -151,6 +183,7 @@ function formatMessage() {
   const zip = formWrapper.querySelector("input[placeholder='ZIPcode*']").value;
   const state = formWrapper.querySelector("input[placeholder='State*']").value;
   const city = formWrapper.querySelector("input[placeholder='City*']").value;
+
   const building = formWrapper.querySelector(
     "input[placeholder='Building no*']"
   ).value;
@@ -192,7 +225,7 @@ function formatMessage() {
   if (summaryItems[0].question) {
     summaryItems.forEach((item) => {
       orderHtml += `
-        <b>Question:</b> ${item.question}\n`;
+  <b>Question:</b> ${item.question}\n`;
       orderHtml += `<b>Answer:</b> ${item.answer}\n`;
       if (item.price) {
         orderHtml += `<b>Price:</b> ${item.price}\n`;
@@ -201,7 +234,7 @@ function formatMessage() {
   } else if (summaryItems[0].title) {
     summaryItems.forEach((item) => {
       orderHtml += `
-        <b>Title:</b> ${item.title}\n`;
+  <b>Title:</b> ${item.title}\n`;
       orderHtml += `<b>Description:</b> ${item.description}\n`;
       if (item.price) {
         orderHtml += `<b>Price:</b> ${item.price}\n`;
@@ -210,22 +243,22 @@ function formatMessage() {
   } else if (summaryItems[0].itemName) {
     summaryItems.forEach((item) => {
       orderHtml += `
-        <b>Furniture:</b> ${item.itemName}\n`;
+  <b>Furniture:</b> ${item.itemName}\n`;
       orderHtml += `<b>Quantity:</b> ${item.quantity}\n`;
       if (item.price) {
         orderHtml += `<b>Price:</b> $${item.price}\n`;
       }
     });
   }
+  if (sessionStorage.getItem("selectedMany")) {
+    orderHtml += `
+  <b>TVs quantity:</b> ${sessionStorage.getItem("selectedMany")}\n`;
+  }
 
   orderHtml += `  
   <b>Total:</b> ${totalSumm}`;
 
   return orderHtml;
-}
-
-function goBackTwoPages() {
-  window.history.go(-2);
 }
 
 function closeModals() {

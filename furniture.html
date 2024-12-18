@@ -421,10 +421,17 @@
           <div class="services_quiz_item_question">
             <h4>Would you like to add photos of your furniture?</h4>
           </div>
-          <div class="quiz_upload_block">
-            <img src="./assets/icons/upload.svg" alt="" />
+          <label class="quiz_upload_block" for="imageUpload">
+            <img src="./assets/icons/upload.svg" alt="Upload Icon" />
             <p>Upload a picture</p>
-          </div>
+
+            <input
+              type="file"
+              id="imageUpload"
+              accept="image/*"
+              style="display: none"
+            />
+          </label>
         </div>
         <div class="comment_secondary">
           <div class="quiz_comments">
@@ -790,6 +797,7 @@
     <script src="./scripts/zip.js"></script>
     <script>
       window.onload = function () {
+        sessionStorage.setItem("service", "/furniture.html");
         const summaryData = sessionStorage.getItem("summaryData");
         if (summaryData) {
           const parsedData = JSON.parse(summaryData);
@@ -802,6 +810,24 @@
           }
         }
       };
+    </script>
+    <script>
+      document
+        .getElementById("imageUpload")
+        .addEventListener("change", function () {
+          const file = this.files[0];
+          if (!file) {
+            console.log("No file selected.");
+            return;
+          }
+
+          const reader = new FileReader();
+          reader.onload = function (e) {
+            // Save image as base64 in sessionStorage
+            sessionStorage.setItem("uploadedImage", e.target.result);
+          };
+          reader.readAsDataURL(file);
+        });
     </script>
   </body>
 </html>

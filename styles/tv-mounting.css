@@ -305,8 +305,10 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  gap: 10px;
   cursor: pointer;
 }
+.quiz_upload_block 
 .quiz_upload_block p {
   /* Body text/M */
   color: rgb(53, 53, 53);

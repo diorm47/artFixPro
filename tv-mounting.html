@@ -164,23 +164,47 @@
           </div>
           <div class="answers_items">
             <div class="answers_item">
-              <input type="radio" name="many" id="" />
+              <input type="radio" name="many" id="tv1" value="1" />
               <p>1</p>
             </div>
             <div class="answers_item">
-              <input type="radio" name="many" id="" />
+              <input type="radio" name="many" id="tv2" value="2" />
               <p>2</p>
             </div>
             <div class="answers_item">
-              <input type="radio" name="many" id="" />
+              <input type="radio" name="many" id="tv3" value="3" />
               <p>3</p>
             </div>
             <div class="answers_item">
-              <input type="radio" name="many" id="" />
+              <input type="radio" name="many" id="tv4" value="4" />
               <p>4</p>
             </div>
           </div>
         </div>
+
+        <script>
+          document.addEventListener("DOMContentLoaded", () => {
+            const radios = document.querySelectorAll('input[name="many"]');
+            const savedValue = sessionStorage.getItem("selectedMany");
+
+            // Устанавливаем сохраненное значение при загрузке страницы
+            if (savedValue) {
+              radios.forEach((radio) => {
+                if (radio.value === savedValue) {
+                  radio.checked = true;
+                }
+              });
+            }
+
+            // Слушаем изменения и сохраняем в sessionStorage
+            radios.forEach((radio) => {
+              radio.addEventListener("change", (event) => {
+                sessionStorage.setItem("selectedMany", event.target.value);
+              });
+            });
+          });
+        </script>
+
         <div class="services_quiz_item">
           <div class="services_quiz_item_question">
             <h4>Choose your tv size*</h4>
@@ -445,10 +469,17 @@
             <div class="services_quiz_item_question">
               <h4>Upload related image(s) of your model for servicing</h4>
             </div>
-            <div class="quiz_upload_block">
-              <img src="./assets/icons/upload.svg" alt="" />
+            <label class="quiz_upload_block" for="imageUpload">
+              <img src="./assets/icons/upload.svg" alt="Upload Icon" />
               <p>Upload a picture</p>
-            </div>
+  
+              <input
+                type="file"
+                id="imageUpload"
+                accept="image/*"
+                style="display: none"
+              />
+            </label>
           </div>
         </div>
       </div>
@@ -586,6 +617,26 @@
         </div>
       </div>
     </div>
+
+    <script>
+      document
+        .getElementById("imageUpload")
+        .addEventListener("change", function () {
+          const file = this.files[0];
+          if (!file) {
+            console.log("No file selected.");
+            return;
+          }
+
+          const reader = new FileReader();
+          reader.onload = function (e) {
+            // Save image as base64 in sessionStorage
+            sessionStorage.setItem("uploadedImage", e.target.result);
+          };
+          reader.readAsDataURL(file);
+        });
+    </script>
+
     <script>
       function toggleRevModal() {
         document.querySelector(".overlay").classList.toggle("visible_overlay");
@@ -774,6 +825,7 @@
     <script src="./scripts/zip.js"></script>
     <script>
       window.onload = function () {
+        sessionStorage.setItem("service", "/tv-mounting.html");
         const summaryData = sessionStorage.getItem("summaryData");
         if (summaryData) {
           const parsedData = JSON.parse(summaryData);
@@ -797,6 +849,28 @@
           concealmentTypeSection.style.display = "none";
         }
       }
+    </script>
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const radios = document.querySelectorAll('input[name="many"]');
+        const savedValue = sessionStorage.getItem("selectedMany");
+
+        // Устанавливаем сохраненное значение при загрузке страницы
+        if (savedValue) {
+          radios.forEach((radio) => {
+            if (radio.value === savedValue) {
+              radio.checked = true;
+            }
+          });
+        }
+
+        // Слушаем изменения и сохраняем в sessionStorage
+        radios.forEach((radio) => {
+          radio.addEventListener("change", (event) => {
+            sessionStorage.setItem("selectedMany", event.target.value);
+          });
+        });
+      });
     </script>
   </body>
 </html>
