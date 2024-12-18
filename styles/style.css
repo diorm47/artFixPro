@@ -675,6 +675,7 @@ footer {
 }
 .nav_menu_item_drop {
   position: relative;
+  z-index: 2;
 }
 .nav_menu_item_drop_list {
   width: 200px;
@@ -915,6 +916,11 @@ footer {
     0px 2px 0px 0px rgb(3, 3, 3);
   background: rgb(53, 53, 53);
   opacity: 0.3;
+}
+.error_modal {
+  width: auto;
+  height: auto;
+  padding: 20px;
 }
 @media only screen and (max-width: 1250px) {
   .container,

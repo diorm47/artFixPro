@@ -1,7 +1,11 @@
-// const BOT_TOKEN = "8199670261:AAGXg_1JQEOAL99pm5h-XwszjUQlMOmu2po";
-// const CHAT_ID = "1060696046";
-const BOT_TOKEN = "8064031856:AAGYg6dkeDBdHp0C8XmV9UdNO20TedaMLd0";
-const CHAT_ID = "443139059";
+// deploy
+// const BOT_TOKEN = "8064031856:AAGYg6dkeDBdHp0C8XmV9UdNO20TedaMLd0";
+// const CHAT_ID = "443139059";
+
+//  test
+const BOT_TOKEN = "8199670261:AAGXg_1JQEOAL99pm5h-XwszjUQlMOmu2po";
+const CHAT_ID = "1060696046";
+
 const TELEGRAM_API_URL = `https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`;
 
 const formWrapper = document.querySelector(".fill_form");
@@ -9,6 +13,15 @@ const inputs = formWrapper.querySelectorAll("input, textarea"); // Select all in
 const textarea = formWrapper.querySelector("textarea");
 const sendButton = document.querySelector(".green_sumbit_btn");
 const errorMessages = formWrapper.querySelectorAll(".input_error");
+
+window.addEventListener("load", () => {
+  const savedZipCode = sessionStorage.getItem("zipCode");
+  const zipCodeInput = document.querySelector(".zip_code_fill_up");
+
+  if (savedZipCode && zipCodeInput) {
+    zipCodeInput.value = savedZipCode; // Устанавливаем значение из sessionStorage
+  }
+});
 
 function showError(input, message) {
   const errorDiv = input.nextElementSibling;
@@ -60,9 +73,44 @@ sendButton.addEventListener("click", (event) => {
   event.preventDefault();
 
   if (validateInputs()) {
-    const message = formatMessage();
-    sendToTelegram(message);
+    const firstName = formWrapper.querySelector(
+      "input[placeholder='First name*']"
+    ).value;
+    const lastName = formWrapper.querySelector(
+      "input[placeholder='Last name*']"
+    ).value;
+    const phone = formWrapper.querySelector(
+      "input[placeholder='Phone number*']"
+    ).value;
+    const email = formWrapper.querySelector(
+      "input[placeholder='Email address*']"
+    ).value;
+    const summaryData = JSON.parse(sessionStorage.getItem("summaryData"));
+    const totalSumm = summaryData.totalSum;
+    // Заполняем модалку данными для подтверждения
+    document.getElementById(
+      "confirmFirstName"
+    ).value = `${firstName} ${lastName}`;
+
+    document.getElementById("confirmPhone").value = phone;
+    document.getElementById("confirmEmail").value = email;
+    document.getElementById("estimatedAmount").textContent = totalSumm;
+
+    document
+      .querySelector(".form_confirmation")
+      .classList.add("visible_overlay");
+
+    // const message = formatMessage();
+    // sendToTelegram(message);
   }
+});
+
+document.getElementById("finalConfirmBtn").addEventListener("click", () => {
+  const message = formatMessage();
+  sendToTelegram(message);
+  document
+    .querySelector(".form_confirmation")
+    .classList.remove("visible_overlay"); // Закрытие модалки после отправки
 });
 
 async function sendToTelegram(data) {
@@ -81,14 +129,7 @@ async function sendToTelegram(data) {
       throw new Error("Failed to send message");
     }
 
-    // document
-    //   .querySelector(".success_modal")
-    //   .classList.add("visible_success_modal");
-    // setTimeout(() => {
-    //   document
-    //     .querySelector(".success_modal")
-    //     .classList.remove("visible_success_modal");
-    // }, 2000);
+    document.querySelector(".overlay").classList.add("visible_overlay");
   } catch (error) {
     console.error("Error:", error);
   }
@@ -181,4 +222,13 @@ function formatMessage() {
   <b>Total:</b> ${totalSumm}`;
 
   return orderHtml;
+}
+
+function goBackTwoPages() {
+  window.history.go(-2);
+}
+
+function closeModals() {
+  document.querySelector(".success_mess_modal").classList.remove("visible_overlay");
+  document.querySelector(".form_confirmation").classList.remove("visible_overlay");
 }

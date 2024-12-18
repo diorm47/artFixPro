@@ -26,14 +26,38 @@ const zips = [
 ];
 
 const form = document.querySelector(".zipcode_form");
-const input = form.querySelector("input");
+const input = form.querySelector(".zipcode_form_input input");
 const button = form.querySelector(".green_sumbit_btn");
+
+// Загрузка сохраненного значения из sessionStorage
+window.addEventListener("load", () => {
+  const savedZipCode = sessionStorage.getItem("zipCode");
+  if (savedZipCode) {
+    input.value = savedZipCode;
+  }
+});
+
+input.addEventListener("input", () => {
+  // Ограничение на 5 символов
+  if (input.value.length > 5) {
+    input.value = input.value.slice(0, 5);
+  }
+});
 
 button.addEventListener("click", (event) => {
   event.preventDefault();
-  const zipCode = parseInt(input.value.trim(), 10);
+  const zipCode = input.value.trim();
 
-  if (zips.includes(zipCode)) {
+  if (zipCode.length !== 5 || isNaN(parseInt(zipCode, 10))) {
+    form.classList.add("zipcode_form_error");
+    form.classList.remove("zipcode_form_approved");
+    return;
+  }
+
+  if (zips.includes(parseInt(zipCode, 10))) {
+    // Сохранение значения в sessionStorage
+    sessionStorage.setItem("zipCode", zipCode);
+
     form.classList.add("zipcode_form_approved");
     form.classList.remove("zipcode_form_error");
     document
@@ -47,4 +71,23 @@ button.addEventListener("click", (event) => {
 
 input.addEventListener("input", () => {
   form.classList.remove("zipcode_form_approved", "zipcode_form_error");
+});
+
+const confirmButton = document.querySelector(".to_schedule");
+
+confirmButton.addEventListener("click", (event) => {
+  const zipCode = sessionStorage.getItem("zipCode");
+
+  if (zipCode) {
+    window.location.href = "./schedule.html";
+  } else {
+    event.preventDefault();
+
+    document
+      .querySelector(".services_header")
+      .scrollIntoView({ behavior: "smooth", block: "start" });
+
+    const form = document.querySelector(".zipcode_form");
+    form.querySelector(".zipcode_form_input input").focus();
+  }
 });

@@ -95,7 +95,13 @@
         </div>
         <div class="form_three">
           <div class="form_input">
-            <input type="text" placeholder="ZIPcode*" required />
+            <input
+              class="zip_code_fill_up"
+              type="text"
+              placeholder="ZIPcode*"
+              required
+              readonly
+            />
             <div class="input_error">
               <span>Fill ZIPcode</span>
             </div>
@@ -193,6 +199,104 @@
         </div>
       </div>
     </footer>
+
+    <div class="overlay success_mess_modal" onclick="closeModals()">
+      <div class="success_send_modal" onclick="event.stopPropagation()">
+        <h2>
+          Thank you <br />
+          for booking
+        </h2>
+        <div class="success_status">
+          <img src="./assets/icons/success-check.svg" alt="" />
+          <p>
+            Your booking has <br />
+            been confirmed
+          </p>
+        </div>
+        <h3>
+          You will now be redirect to <br />
+          dashboard in a short while...
+        </h3>
+        <button class="to_dashb green_sumbit_btn" onclick="goBackTwoPages()">
+          Go to dashboard
+        </button>
+      </div>
+    </div>
+
+    <div class="overlay form_confirmation" onclick="closeModals()">
+      <div
+        class="success_send_modal form_confirm_modal"
+        onclick="event.stopPropagation()"
+      >
+        <h2>Confirm and book</h2>
+
+        <div class="estimated">
+          <span>Estimated</span>
+          <p id="estimatedAmount">$00.00</p>
+        </div>
+
+        <!-- Основные данные формы для подтверждения -->
+        <div class="confirm_datas">
+          <div class="zipcode_form_input coupon_input">
+            <input type="text" name="" id="" placeholder="Enter coupon code" />
+          </div>
+          <div class="zipcode_form_input zipcode_form_approved">
+            <input
+              type="text"
+              id="confirmFirstName"
+              class="confirm_name_last_name_input"
+              readonly
+            />
+            <img
+              class="zipcode_form_input_icon success_icon"
+              src="./assets/icons/check mark.svg"
+              alt=""
+            />
+          </div>
+
+          <div class="zipcode_form_input zipcode_form_approved">
+            <input
+              type="text"
+              id="confirmPhone"
+              class="confirm_phone_input"
+              readonly
+            />
+            <img
+              class="zipcode_form_input_icon success_icon"
+              src="./assets/icons/check mark.svg"
+              alt=""
+            />
+          </div>
+          <div class="zipcode_form_input zipcode_form_approved">
+            <input
+              type="text"
+              id="confirmEmail"
+              class="confirm_email_input"
+              readonly
+            />
+            <img
+              class="zipcode_form_input_icon success_icon"
+              src="./assets/icons/check mark.svg"
+              alt=""
+            />
+          </div>
+        </div>
+
+        <div class="confirm_terms">
+          <p>
+            By confirming booking, I state that I have read and understood the
+            <br />
+            <a href="#">terms and conditions</a>, and I agree to the terms and
+            conditions as set out by the user agreement.
+          </p>
+        </div>
+
+        <button class="green_sumbit_btn" id="finalConfirmBtn">
+          Confirm Booking
+        </button>
+      </div>
+    </div>
+
     <script>
       document.querySelector(".to_contacts").addEventListener("click", () => {
         window.location.href = "/index.html#contacts_block";

@@ -130,50 +130,50 @@
             </div>
           </div>
           <div class="calendar_times">
-            <div class="calendar_time">
+            <label class="calendar_time">
               <p>08:00AM - 10:00AM</p>
               <input type="radio" name="time" value="08:00AM - 10:00AM" />
-            </div>
-            <div class="calendar_time">
+            </label>
+            <label class="calendar_time">
               <p>09:00AM - 11:00AM</p>
               <input type="radio" name="time" value="09:00AM - 11:00AM" />
-            </div>
-            <div class="calendar_time">
+            </label>
+            <label class="calendar_time">
               <p>10:00AM - 12:00PM</p>
               <input type="radio" name="time" value="10:00AM - 12:00PM" />
-            </div>
-            <div class="calendar_time">
+            </label>
+            <label class="calendar_time">
               <p>11:00AM - 01:00PM</p>
               <input type="radio" name="time" value="11:00AM - 01:00PM" />
-            </div>
-            <div class="calendar_time">
+            </label>
+            <label class="calendar_time">
               <p>12:00PM - 02:00PM</p>
               <input type="radio" name="time" value="12:00PM - 02:00PM" />
-            </div>
-            <div class="calendar_time">
+            </label>
+            <label class="calendar_time">
               <p>01:00PM - 03:00PM</p>
               <input type="radio" name="time" value="01:00PM - 03:00PM" />
-            </div>
-            <div class="calendar_time">
+            </label>
+            <label class="calendar_time">
               <p>02:00PM - 04:00PM</p>
               <input type="radio" name="time" value="02:00PM - 04:00PM" />
-            </div>
-            <div class="calendar_time">
+            </label>
+            <label class="calendar_time">
               <p>03:00PM - 05:00PM</p>
               <input type="radio" name="time" value="03:00PM - 05:00PM" />
-            </div>
-            <div class="calendar_time">
+            </label>
+            <label class="calendar_time">
               <p>04:00PM - 06:00PM</p>
               <input type="radio" name="time" value="04:00PM - 06:00PM" />
-            </div>
-            <div class="calendar_time">
+            </label>
+            <label class="calendar_time">
               <p>05:00PM - 07:00PM</p>
               <input type="radio" name="time" value="05:00PM - 07:00PM" />
-            </div>
-            <div class="calendar_time">
+            </label>
+            <label class="calendar_time">
               <p>06:00PM - 08:00PM</p>
               <input type="radio" name="time" value="06:00PM - 08:00PM" />
-            </div>
+            </label>
           </div>
         </div>
       </div>
@@ -188,11 +188,11 @@
             <h4>Estimated</h4>
             <p>$0</p>
           </div>
-          <a href="./fill-up.html">
-            <button class="green_sumbit_btn">
-              Confirm Selections
-              <img src="./assets/icons/arrow-right.svg" alt="" /></button
-          ></a>
+
+          <button class="green_sumbit_btn to_fill_up">
+            Confirm Selections
+            <img src="./assets/icons/arrow-right.svg" alt="" />
+          </button>
           <button class="green_sumbit_btn chev_btm" onclick="goBack()">
             <img src="./assets/icons/rigt-chev.svg" alt="" />
           </button>
@@ -221,6 +221,11 @@
         </div>
       </div>
     </footer>
+
+    <div class="success_modal error_modal">
+      <p>Choose your booking schedule</p>
+    </div>
+
     <script src="./scripts/calendar.js"></script>
     <script>
       document.querySelector(".to_contacts").addEventListener("click", () => {

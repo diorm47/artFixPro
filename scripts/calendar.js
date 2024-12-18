@@ -151,3 +151,25 @@ window.addEventListener("load", () => {
 function goBack() {
   window.history.back();
 }
+
+
+const confirmButton = document.querySelector(".to_fill_up");
+
+confirmButton.addEventListener("click", (event) => {
+  const selectedTime = sessionStorage.getItem("selectedTime");
+  const selectedDate = sessionStorage.getItem("selectedDate");
+
+  if (!selectedTime || !selectedDate) {
+    event.preventDefault();
+    document
+      .querySelector(".success_modal")
+      .classList.add("visible_success_modal");
+    setTimeout(() => {
+      document
+        .querySelector(".success_modal")
+        .classList.remove("visible_success_modal");
+    }, 2000);
+  } else {
+    window.location.href = "./fill-up.html";
+  }
+});

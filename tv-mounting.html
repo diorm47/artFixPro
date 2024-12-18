@@ -359,7 +359,12 @@
                 <div>
                   <span>Yes</span>
                 </div>
-                <input type="radio" name="concealment" />
+                <input
+                  type="radio"
+                  name="concealment"
+                  value="yes"
+                  onclick="toggleConcealmentType(true)"
+                />
               </div>
             </div>
             <div class="answer_card">
@@ -370,12 +375,22 @@
                 <div>
                   <span>No</span>
                 </div>
-                <input type="radio" name="concealment" />
+                <input
+                  type="radio"
+                  name="concealment"
+                  value="no"
+                  onclick="toggleConcealmentType(false)"
+                />
               </div>
             </div>
           </div>
         </div>
-        <div class="services_quiz_item">
+
+        <div
+          class="services_quiz_item"
+          id="concealmentType"
+          style="display: none"
+        >
           <div class="services_quiz_item_question">
             <h4>Wire concealment type*</h4>
           </div>
@@ -389,7 +404,7 @@
                   <span>On wall</span>
                   <p>$50.00</p>
                 </div>
-                <input type="radio" name="concealment" />
+                <input type="radio" name="concealmentType" />
               </div>
             </div>
             <div class="answer_card">
@@ -401,11 +416,24 @@
                   <span>In wall</span>
                   <p>$75.00</p>
                 </div>
-                <input type="radio" name="concealment" />
+                <input type="radio" name="concealmentType" />
               </div>
             </div>
           </div>
         </div>
+
+        <script>
+          function toggleConcealmentType(show) {
+            const concealmentTypeSection =
+              document.getElementById("concealmentType");
+            if (show) {
+              concealmentTypeSection.style.display = "block";
+            } else {
+              concealmentTypeSection.style.display = "none";
+            }
+          }
+        </script>
+
         <div class="quiz_btm">
           <div class="quiz_comments">
             <div class="services_quiz_item_question">
@@ -435,11 +463,11 @@
             <h4>Estimated</h4>
             <p class="summ_total">0</p>
           </div>
-          <a href="./schedule.html">
-            <button class="green_sumbit_btn">
-              Confirm Selections
-              <img src="./assets/icons/arrow-right.svg" alt="" /></button
-          ></a>
+
+          <button class="to_schedule green_sumbit_btn">
+            Confirm Selections
+            <img src="./assets/icons/arrow-right.svg" alt="" />
+          </button>
           <button class="green_sumbit_btn chev_btm chev_btm_disabled">
             <img src="./assets/icons/rigt-chev.svg" alt="" />
           </button>
@@ -758,6 +786,17 @@
           }
         }
       };
+    </script>
+    <script>
+      function toggleConcealmentType(show) {
+        const concealmentTypeSection =
+          document.getElementById("concealmentType");
+        if (show) {
+          concealmentTypeSection.style.display = "block";
+        } else {
+          concealmentTypeSection.style.display = "none";
+        }
+      }
     </script>
   </body>
 </html>

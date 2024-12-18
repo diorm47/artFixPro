@@ -20,7 +20,6 @@
   gap: 20px;
 }
 
-
 .calendar {
   box-sizing: border-box;
   border: 1px solid rgb(198, 223, 251);
@@ -204,6 +203,7 @@
 .calendar_time input {
   width: 15px;
   height: 15px;
+  cursor: pointer;
 }
 
 .fill_container {
@@ -264,6 +264,122 @@
   color: #fff;
 }
 
+.success_send_modal {
+  padding: 60px 30px;
+  border-radius: 5px;
+  width: 330px;
+
+  background: rgb(255, 255, 255);
+}
+.success_send_modal h2 {
+  color: rgb(53, 53, 53);
+  font-family: Montserrat;
+  font-size: 26px;
+  font-weight: 300;
+  line-height: 32px;
+  letter-spacing: 0%;
+  text-align: center;
+  margin-bottom: 9px;
+}
+
+.success_status {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  box-sizing: border-box;
+  border: 1px solid rgb(193, 240, 206);
+  border-radius: 5px;
+
+  background: rgb(233, 250, 238);
+  padding: 10px;
+  margin-bottom: 9px;
+}
+
+.success_status p {
+  color: rgb(53, 53, 53);
+  font-family: Montserrat;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 22px;
+  letter-spacing: 0%;
+  text-align: left;
+}
+
+.success_send_modal h3 {
+  color: rgb(53, 53, 53);
+  font-family: Montserrat;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 17px;
+  letter-spacing: 0%;
+  text-align: center;
+  margin-bottom: 16px;
+}
+
+.to_dashb {
+  cursor: pointer;
+}
+
+.estimated {
+  box-sizing: border-box;
+  border: 1px solid rgb(198, 223, 251);
+  border-radius: 5px;
+
+  box-shadow: 0px 12px 24px -12px rgba(32, 129, 240, 0.2);
+  background: rgb(32, 129, 240);
+  padding: 13px 20px;
+  margin-bottom: 20px;
+}
+.estimated span {
+  color: rgb(239, 246, 254);
+  font-family: Montserrat;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 17px;
+  letter-spacing: 0%;
+  text-align: left;
+  margin-bottom: 6px;
+}
+.estimated p {
+  color: rgb(255, 255, 255);
+  font-family: Montserrat;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 20px;
+  letter-spacing: 0%;
+  text-align: left;
+}
+.confirm_terms p {
+  font-family: Montserrat;
+font-size: 12px;
+font-weight: 400;
+line-height: 15px;
+letter-spacing: 0%;
+text-align: left;
+margin-bottom: 20px;
+color: rgb(53, 53, 53);
+}
+.confirm_terms a {
+  color: rgb(32, 129, 240);
+  text-decoration: underline;
+}
+.confirm_datas .zipcode_form_input {
+  margin-bottom: 20px;
+}
+.form_confirm_modal {
+  padding: 40px 30px !important;
+}
+.coupon_input  input{
+  box-sizing: border-box;
+border-bottom: 1px solid rgb(156, 198, 247);
+border-radius: 5px;
+
+box-shadow: inset 2px 2px 6px -2px rgba(0, 0, 0, 0.09);
+background: rgb(239, 246, 254);
+}
+.coupon_input .success_icon {
+  display: none;
+}
 @media only screen and (max-width: 1000px) {
   .fill_container,
   .schedule_container {
@@ -318,14 +434,15 @@
     letter-spacing: 0%;
   }
   .calendar_totals {
-    gap: 14px;    margin-top: 10px;
+    gap: 14px;
+    margin-top: 10px;
   }
   .calendar_total {
     width: 50%;
-
   }
 
-  .calendar_day, .calendar_dates div {
+  .calendar_day,
+  .calendar_dates div {
     height: 40px;
   }
 }
