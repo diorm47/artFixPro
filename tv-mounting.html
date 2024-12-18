@@ -470,9 +470,11 @@
               <h4>Upload related image(s) of your model for servicing</h4>
             </div>
             <label class="quiz_upload_block" for="imageUpload">
-              <img src="./assets/icons/upload.svg" alt="Upload Icon" />
-              <p>Upload a picture</p>
-  
+              <img src="" class="uploaded_image" alt="Uploaded Image" style="display: none;" />
+              <div class="upload_block">
+                <img src="./assets/icons/upload.svg" alt="Upload Icon" />
+                <p>Upload a picture</p>
+              </div>
               <input
                 type="file"
                 id="imageUpload"
@@ -619,22 +621,37 @@
     </div>
 
     <script>
-      document
-        .getElementById("imageUpload")
-        .addEventListener("change", function () {
-          const file = this.files[0];
-          if (!file) {
-            console.log("No file selected.");
-            return;
-          }
-
-          const reader = new FileReader();
-          reader.onload = function (e) {
-            // Save image as base64 in sessionStorage
-            sessionStorage.setItem("uploadedImage", e.target.result);
-          };
-          reader.readAsDataURL(file);
-        });
+      document.getElementById("imageUpload").addEventListener("change", function () {
+        const file = this.files[0];
+        if (!file) {
+          console.log("No file selected.");
+          return;
+        }
+    
+        const reader = new FileReader();
+        reader.onload = function (e) {
+          // Save image as base64 in sessionStorage
+          sessionStorage.setItem("uploadedImage", e.target.result);
+    
+          // Update the src of the image to display the uploaded picture
+          const uploadedImage = document.querySelector(".uploaded_image");
+          uploadedImage.src = e.target.result;
+    
+          // Make the image visible
+          uploadedImage.style.display = "block";
+        };
+        reader.readAsDataURL(file);
+      });
+    
+      // On page load, restore the uploaded image from sessionStorage (if exists)
+      window.addEventListener("load", () => {
+        const savedImage = sessionStorage.getItem("uploadedImage");
+        if (savedImage) {
+          const uploadedImage = document.querySelector(".uploaded_image");
+          uploadedImage.src = savedImage;
+          uploadedImage.style.display = "block";
+        }
+      });
     </script>
 
     <script>
@@ -869,6 +886,34 @@
           radio.addEventListener("change", (event) => {
             sessionStorage.setItem("selectedMany", event.target.value);
           });
+        });
+      });
+    </script>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const setCheckedForActiveCards = () => {
+          const activeCards = document.querySelectorAll(".active_answer_card");
+          activeCards.forEach((card) => {
+            const input = card.querySelector("input[type='radio']");
+            if (input) {
+              input.checked = true;
+            }
+          });
+        };
+
+        // Установить checked при загрузке страницы
+        setCheckedForActiveCards();
+
+        // Если классы могут изменяться динамически
+        const observer = new MutationObserver(() => {
+          setCheckedForActiveCards();
+        });
+
+        observer.observe(document.body, {
+          attributes: true,
+          subtree: true,
+          attributeFilter: ["class"],
         });
       });
     </script>
