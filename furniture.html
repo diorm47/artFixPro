@@ -422,7 +422,12 @@
             <h4>Would you like to add photos of your furniture?</h4>
           </div>
           <label class="quiz_upload_block" for="imageUpload">
-            <img src="" class="uploaded_image" alt="Uploaded Image" style="display: none;" />
+            <img
+              src=""
+              class="uploaded_image"
+              alt="Uploaded Image"
+              style="display: none"
+            />
             <div class="upload_block">
               <img src="./assets/icons/upload.svg" alt="Upload Icon" />
               <p>Upload a picture</p>
@@ -595,22 +600,19 @@
 
         let totalSum = 0;
 
-        // Функция для обновления общей суммы
         const updateTotal = () => {
           totalDisplay.textContent = `$${totalSum.toFixed(2)}`;
         };
 
-        // Функция для сохранения состояния в sessionStorage
         const saveState = () => {
           const summaryItems = [];
-          items.forEach((item, index) => {
+          items.forEach((item) => {
             const checkbox = item.querySelector(".furniture_select_item_check");
             const input = item.querySelector("input[type='text']");
             const priceText = item.querySelector("p").textContent;
             const price = parseFloat(priceText.match(/\$(\d+)/)[1]);
             const quantity = parseInt(input.value) || 1;
 
-            // Сохраняем только выбранные элементы
             if (checkbox.checked) {
               summaryItems.push({
                 checked: checkbox.checked,
@@ -621,14 +623,12 @@
             }
           });
 
-          // Добавляем totalSum в состояние
           sessionStorage.setItem(
             "summaryData",
             JSON.stringify({ summaryItems, totalSum })
           );
         };
 
-        // Функция для загрузки состояния из sessionStorage
         const loadState = () => {
           const savedState = JSON.parse(sessionStorage.getItem("summaryData"));
           if (savedState && savedState.summaryItems) {
@@ -641,32 +641,27 @@
                   ".furniture_select_item_check"
                 );
                 const input = item.querySelector("input[type='text']");
-                const priceText = item.querySelector("p").textContent;
-                const price = itemState.price;
-
-                // Восстанавливаем состояние элемента
                 checkbox.checked = itemState.checked;
                 input.value = itemState.quantity;
 
                 if (checkbox.checked) {
-                  const itemCost = price * itemState.quantity;
+                  const itemCost = itemState.price * itemState.quantity;
                   totalSum += itemCost;
 
                   const summaryItem = document.createElement("div");
                   summaryItem.classList.add("summary_item");
                   summaryItem.innerHTML = `
-                <div class="summary_item_type">
-                  <div class="summary_item_remove">
-                    <img src="./assets/icons/del.svg" alt="Remove" />
-                  </div>
-                  <h4>${itemState.itemName}</h4>
+              <div class="summary_item_type">
+                <div class="summary_item_remove">
+                  <img src="./assets/icons/del.svg" alt="Remove" />
                 </div>
-                <p>${itemState.quantity} item(s)</p>
-                <p><b>$${itemCost.toFixed(2)}</b></p>
-              `;
+                <h4>${itemState.itemName}</h4>
+              </div>
+              <p>${itemState.quantity} item(s)</p>
+              <p><b>$${itemCost.toFixed(2)}</b></p>
+            `;
                   summaryContainer.appendChild(summaryItem);
 
-                  // Удаление элемента из сводки
                   summaryItem
                     .querySelector(".summary_item_remove img")
                     .addEventListener("click", () => {
@@ -678,76 +673,74 @@
                 }
               }
             });
-
-            // Восстанавливаем totalSum из сохраненного состояния
             totalSum = savedState.totalSum;
             updateTotal();
           }
         };
 
-        // Слушатели событий для флажков и полей ввода
         items.forEach((item) => {
           const checkbox = item.querySelector(".furniture_select_item_check");
-          const priceText = item.querySelector("p").textContent;
           const input = item.querySelector("input[type='text']");
+          const priceText = item.querySelector("p").textContent;
           const price = parseFloat(priceText.match(/\$(\d+)/)[1]);
 
-          checkbox.addEventListener("change", () => {
-            const itemName = priceText.split("$")[0].trim();
-            const quantity = parseInt(input.value) || 1; // Если поле пустое, по умолчанию 1
+          item.addEventListener("click", (e) => {
+            if (!e.target.matches("input, img")) {
+              checkbox.checked = !checkbox.checked;
 
-            if (checkbox.checked) {
-              const itemCost = price * quantity;
-              totalSum += itemCost;
+              if (checkbox.checked) {
+                input.focus();
+                const quantity = parseInt(input.value) || 1;
+                const itemCost = price * quantity;
+                totalSum += itemCost;
 
-              const summaryItem = document.createElement("div");
-              summaryItem.classList.add("summary_item");
-              summaryItem.innerHTML = `
+                const summaryItem = document.createElement("div");
+                summaryItem.classList.add("summary_item");
+                summaryItem.innerHTML = `
             <div class="summary_item_type">
               <div class="summary_item_remove">
                 <img src="./assets/icons/del.svg" alt="Remove" />
               </div>
-              <h4>${itemName}</h4>
+              <h4>${priceText.split("$")[0].trim()}</h4>
             </div>
             <p>${quantity} item(s)</p>
             <p><b>$${itemCost.toFixed(2)}</b></p>
           `;
-              summaryContainer.appendChild(summaryItem);
+                summaryContainer.appendChild(summaryItem);
 
-              // Удаление элемента из сводки
-              summaryItem
-                .querySelector(".summary_item_remove img")
-                .addEventListener("click", () => {
-                  summaryItem.remove();
-                  totalSum -= itemCost;
-                  checkbox.checked = false;
-                  updateTotal();
-                });
-            } else {
-              // Если флажок снят, удаляем элемент из сводки
-              const summaryItem = Array.from(summaryContainer.children).find(
-                (child) =>
-                  child.querySelector("h4").textContent.includes(itemName)
-              );
-              if (summaryItem) {
-                totalSum -= parseFloat(
-                  summaryItem.querySelector("b").textContent.replace("$", "")
+                summaryItem
+                  .querySelector(".summary_item_remove img")
+                  .addEventListener("click", () => {
+                    summaryItem.remove();
+                    totalSum -= itemCost;
+                    checkbox.checked = false;
+                    updateTotal();
+                  });
+              } else {
+                const summaryItem = Array.from(summaryContainer.children).find(
+                  (child) =>
+                    child
+                      .querySelector("h4")
+                      .textContent.includes(priceText.split("$")[0].trim())
                 );
-                summaryItem.remove();
+                if (summaryItem) {
+                  totalSum -= parseFloat(
+                    summaryItem.querySelector("b").textContent.replace("$", "")
+                  );
+                  summaryItem.remove();
+                }
               }
-            }
 
-            updateTotal();
-            saveState(); // Сохраняем состояние после изменения
+              updateTotal();
+              saveState();
+            }
           });
 
           input.addEventListener("input", () => {
             if (checkbox.checked) {
               const quantity = parseInt(input.value) || 1;
-              // Обновляем общую сумму при изменении количества
               const itemCost = price * quantity;
 
-              // Находим и обновляем элемент в сводке
               const summaryItem = Array.from(summaryContainer.children).find(
                 (child) =>
                   child
@@ -762,22 +755,24 @@
                 summaryItem.querySelector(
                   "b"
                 ).textContent = `$${itemCost.toFixed(2)}`;
-                totalSum = 0;
-                Array.from(summaryContainer.children).forEach((item) => {
-                  totalSum += parseFloat(
-                    item.querySelector("b").textContent.replace("$", "")
-                  );
-                });
+                totalSum = Array.from(summaryContainer.children).reduce(
+                  (sum, item) =>
+                    sum +
+                    parseFloat(
+                      item.querySelector("b").textContent.replace("$", "")
+                    ),
+                  0
+                );
               }
 
               updateTotal();
-              saveState(); // Сохраняем состояние после изменения
+              saveState();
             }
           });
         });
 
-        loadState(); // Загружаем состояние при загрузке страницы
-        updateTotal(); // Инициализация общей суммы
+        loadState();
+        updateTotal();
       });
     </script>
 
@@ -814,28 +809,30 @@
       };
     </script>
     <script>
-      document.getElementById("imageUpload").addEventListener("change", function () {
-        const file = this.files[0];
-        if (!file) {
-          console.log("No file selected.");
-          return;
-        }
-    
-        const reader = new FileReader();
-        reader.onload = function (e) {
-          // Save image as base64 in sessionStorage
-          sessionStorage.setItem("uploadedImage", e.target.result);
-    
-          // Update the src of the image to display the uploaded picture
-          const uploadedImage = document.querySelector(".uploaded_image");
-          uploadedImage.src = e.target.result;
-    
-          // Make the image visible
-          uploadedImage.style.display = "block";
-        };
-        reader.readAsDataURL(file);
-      });
-    
+      document
+        .getElementById("imageUpload")
+        .addEventListener("change", function () {
+          const file = this.files[0];
+          if (!file) {
+            console.log("No file selected.");
+            return;
+          }
+
+          const reader = new FileReader();
+          reader.onload = function (e) {
+            // Save image as base64 in sessionStorage
+            sessionStorage.setItem("uploadedImage", e.target.result);
+
+            // Update the src of the image to display the uploaded picture
+            const uploadedImage = document.querySelector(".uploaded_image");
+            uploadedImage.src = e.target.result;
+
+            // Make the image visible
+            uploadedImage.style.display = "block";
+          };
+          reader.readAsDataURL(file);
+        });
+
       // On page load, restore the uploaded image from sessionStorage (if exists)
       window.addEventListener("load", () => {
         const savedImage = sessionStorage.getItem("uploadedImage");
