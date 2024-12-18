@@ -212,8 +212,13 @@
   background: rgb(239, 246, 254);
   opacity: 0.6;
   padding: 10px;
+  transition: all 0.4s ease;
+  cursor: pointer;
 }
-
+.answer_card:hover {
+  transition: all 0.4s ease;
+  opacity: 1;
+}
 .answer_card_desc {
   display: flex;
   align-items: center;
@@ -246,7 +251,7 @@
 .active_answer_card {
   opacity: 1;
   box-sizing: border-box;
-  border: 2px solid rgb(32, 129, 240), rgb(198, 223, 251);
+  border: 2px solid rgb(32, 129, 240);
   border-radius: 5px;
 
   background: rgb(255, 255, 255);

@@ -128,14 +128,22 @@ document.addEventListener("DOMContentLoaded", () => {
   renderCalendar(currentDate);
 });
 
-// Функция для сохранения выбора в sessionStorage
+// Добавление активного класса при изменении выбора
 document.querySelectorAll('input[name="time"]').forEach((radio) => {
   radio.addEventListener("change", (event) => {
+    // Убираем активный класс у всех элементов
+    document.querySelectorAll('.calendar_time').forEach(label => {
+      label.classList.remove('active_calendar_time');
+    });
+    // Добавляем активный класс выбранному элементу
+    event.target.closest('label').classList.add('active_calendar_time');
+    
+    // Сохраняем выбранное время в sessionStorage
     sessionStorage.setItem("selectedTime", event.target.value);
   });
 });
 
-// Восстановление выбранного времени при загрузке страницы
+// Восстановление выбранного времени и активного класса при загрузке страницы
 window.addEventListener("load", () => {
   const selectedTime = sessionStorage.getItem("selectedTime");
   if (selectedTime) {
@@ -144,9 +152,11 @@ window.addEventListener("load", () => {
     );
     if (selectedRadio) {
       selectedRadio.checked = true;
+      selectedRadio.closest('label').classList.add('active_calendar_time');  // Добавляем активный класс
     }
   }
 });
+
 
 function goBack() {
   window.history.back();

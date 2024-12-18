@@ -90,8 +90,12 @@
   cursor: pointer;
   border: 1px solid rgb(198, 223, 251);
   background: rgb(255, 255, 255);
-
+  transition: all 0.4s ease;
   height: 73.67px;
+}
+.calendar_day:hover {
+  transition: all 0.4s ease;
+  border: 1px solid rgb(32, 129, 240) !important;
 }
 
 .calendar_day p {
@@ -187,7 +191,21 @@
   padding: 12px 16px 12px 16px;
   background: rgb(239, 246, 254);
   margin-bottom: 4px;
+  transition: all 0.4s ease;
 }
+.calendar_time:hover {
+  transition: all 0.4s ease;
+  border: 1px solid rgb(32, 129, 240);
+}
+.active_calendar_time {
+  
+  box-sizing: border-box;
+  border: 1px solid rgb(32, 129, 240);
+  border-radius: 5px;
+
+  background: rgb(32, 129, 240);
+}
+
 
 .calendar_time p {
   /* Body text/M */
@@ -199,7 +217,9 @@
   letter-spacing: 0%;
   text-align: left;
 }
-
+.active_calendar_time p {
+  color: rgb(255, 255, 255);
+}
 .calendar_time input {
   width: 15px;
   height: 15px;
@@ -351,13 +371,13 @@
 }
 .confirm_terms p {
   font-family: Montserrat;
-font-size: 12px;
-font-weight: 400;
-line-height: 15px;
-letter-spacing: 0%;
-text-align: left;
-margin-bottom: 20px;
-color: rgb(53, 53, 53);
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 15px;
+  letter-spacing: 0%;
+  text-align: left;
+  margin-bottom: 20px;
+  color: rgb(53, 53, 53);
 }
 .confirm_terms a {
   color: rgb(32, 129, 240);
@@ -369,13 +389,13 @@ color: rgb(53, 53, 53);
 .form_confirm_modal {
   padding: 40px 30px !important;
 }
-.coupon_input  input{
+.coupon_input input {
   box-sizing: border-box;
-border-bottom: 1px solid rgb(156, 198, 247);
-border-radius: 5px;
+  border-bottom: 1px solid rgb(156, 198, 247);
+  border-radius: 5px;
 
-box-shadow: inset 2px 2px 6px -2px rgba(0, 0, 0, 0.09);
-background: rgb(239, 246, 254);
+  box-shadow: inset 2px 2px 6px -2px rgba(0, 0, 0, 0.09);
+  background: rgb(239, 246, 254);
 }
 .coupon_input .success_icon {
   display: none;

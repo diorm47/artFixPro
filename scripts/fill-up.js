@@ -1,10 +1,10 @@
-// deploy
-// const BOT_TOKEN = "8064031856:AAGYg6dkeDBdHp0C8XmV9UdNO20TedaMLd0";
-// const CHAT_ID = "443139059";
+deploy;
+const BOT_TOKEN = "8064031856:AAGYg6dkeDBdHp0C8XmV9UdNO20TedaMLd0";
+const CHAT_ID = "443139059";
 
 //  test
-const BOT_TOKEN = "8199670261:AAGXg_1JQEOAL99pm5h-XwszjUQlMOmu2po";
-const CHAT_ID = "1060696046";
+// const BOT_TOKEN = "8199670261:AAGXg_1JQEOAL99pm5h-XwszjUQlMOmu2po";
+// const CHAT_ID = "1060696046";
 
 const TELEGRAM_API_URL = `https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`;
 
@@ -229,6 +229,10 @@ function goBackTwoPages() {
 }
 
 function closeModals() {
-  document.querySelector(".success_mess_modal").classList.remove("visible_overlay");
-  document.querySelector(".form_confirmation").classList.remove("visible_overlay");
+  document
+    .querySelector(".success_mess_modal")
+    .classList.remove("visible_overlay");
+  document
+    .querySelector(".form_confirmation")
+    .classList.remove("visible_overlay");
 }

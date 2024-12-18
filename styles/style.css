@@ -19,6 +19,7 @@ button {
   border: none;
   cursor: pointer;
   font-family: "Montserrat", serif;
+  transition: all 0.4s ease;
 }
 input,
 textarea {
@@ -65,6 +66,12 @@ nav p {
   padding: 6px 10px 6px 10px;
   backdrop-filter: blur(6px);
   background: rgba(255, 255, 255, 0.05);
+  transition: all 0.4s ease;
+}
+.nav_menu_item:hover {
+  transition: all 0.4s ease;
+  backdrop-filter: blur(3px);
+  background: rgba(255, 255, 255, 0.01);
 }
 
 .nav_login {
@@ -72,10 +79,21 @@ nav p {
   align-items: center;
   gap: 10px;
   justify-content: flex-end;
+  transition: all 0.4s ease;
+  padding: 6px 10px 6px 10px;
+  border: 1px solid transparent;
+  border-radius: 3px;
+}
+.nav_login:hover {
+  transition: all 0.4s ease;
+  border: 1px solid rgba(255, 255, 255, 0.5);
 }
 
 .nav_right {
   width: 227px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
 }
 .header_content {
   padding: 180px 0 150px;
@@ -283,6 +301,16 @@ section {
   letter-spacing: 2%;
   text-align: center;
   text-transform: uppercase;
+  transition: all 0.4s ease;
+}
+.green_sumbit_btn:hover,
+.send_btn:hover {
+  transition: all 0.4s ease;
+  border-radius: 3px;
+
+  box-shadow: 0px 6px 10px 0px rgba(53, 53, 53, 0.16),
+    0px 2px 0px 0px rgb(0, 139, 18), 0px 2px 0px 0px rgb(24, 84, 152);
+  background: rgb(32, 129, 240);
 }
 
 .zipcode_form button {
@@ -426,7 +454,27 @@ input[type="number"] {
       rgb(36, 36, 36) 96.191%
     ),
     url(../assets/images/services/1.png);
+  transition: all 0.4s ease;
 }
+.services_block_card1 {
+  background: linear-gradient(
+      244.36deg,
+      rgba(36, 36, 36, 0.2) 3.814%,
+      rgb(36, 36, 36) 96.191%
+    ),
+    url(../assets/images/services/1.png);
+  transition: all 0.4s ease;
+}
+
+.services_block_card1:hover {
+  background: linear-gradient(
+      244.36deg,
+      rgba(36, 36, 36, 0) 3.814%,
+      rgb(36, 36, 36) 96.191%
+    ),
+    url(../assets/images/services/1.png);
+}
+
 .services_block_card2 {
   background: linear-gradient(
       244.36deg,
@@ -434,7 +482,17 @@ input[type="number"] {
       rgb(36, 36, 36) 96.191%
     ),
     url(../assets/images/services/2.png);
+  transition: all 0.4s ease;
 }
+.services_block_card2:hover {
+  background: linear-gradient(
+      244.36deg,
+      rgba(36, 36, 36, 0) 3.814%,
+      rgb(36, 36, 36) 96.191%
+    ),
+    url(../assets/images/services/2.png);
+}
+
 .services_block_card3 {
   background: linear-gradient(
       244.36deg,
@@ -442,11 +500,30 @@ input[type="number"] {
       rgb(36, 36, 36) 96.191%
     ),
     url(../assets/images/services/3.png);
+  transition: all 0.4s ease;
 }
+.services_block_card3:hover {
+  background: linear-gradient(
+      244.36deg,
+      rgba(36, 36, 36, 0) 3.814%,
+      rgb(36, 36, 36) 96.191%
+    ),
+    url(../assets/images/services/3.png);
+}
+
 .services_block_card4 {
   background: linear-gradient(
       244.36deg,
       rgba(36, 36, 36, 0.2) 3.814%,
+      rgb(36, 36, 36) 96.191%
+    ),
+    url(../assets/images/services/4.png);
+  transition: all 0.4s ease;
+}
+.services_block_card4:hover {
+  background: linear-gradient(
+      244.36deg,
+      rgba(36, 36, 36, 0) 3.814%,
       rgb(36, 36, 36) 96.191%
     ),
     url(../assets/images/services/4.png);
@@ -639,7 +716,9 @@ footer {
   letter-spacing: 0%;
   text-align: left;
 }
-
+.footer_right p:hover {
+  text-decoration: underline;
+}
 .services_summary_total .green_sumbit_btn {
   height: 44px;
   font-size: 15px;
@@ -914,7 +993,7 @@ footer {
   cursor: default;
   box-shadow: 0px 6px 10px 0px rgba(53, 53, 53, 0.16),
     0px 2px 0px 0px rgb(3, 3, 3);
-  background: rgb(53, 53, 53);
+  background: rgb(53, 53, 53) !important;
   opacity: 0.3;
 }
 .error_modal {
