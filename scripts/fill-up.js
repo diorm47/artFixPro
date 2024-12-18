@@ -1,4 +1,4 @@
-deploy;
+// deploy;
 const BOT_TOKEN = "8064031856:AAGYg6dkeDBdHp0C8XmV9UdNO20TedaMLd0";
 const CHAT_ID = "443139059";
 
